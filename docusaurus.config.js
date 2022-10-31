@@ -70,7 +70,6 @@ const config = {
             position: 'left',
             label: 'Tutorial',
           },
-          {to: '/blog', label: 'Blog', position: 'left'},
           {
             label: 'Discord',
             href: 'https://discord.gg/YUtRKAqty2',
