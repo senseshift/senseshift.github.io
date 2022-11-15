@@ -77,6 +77,12 @@ const config = {
             label: 'Hardware',
           },
           {
+            type: 'doc',
+            docId: 'roadmap',
+            position: 'right',
+            label: 'Roadmap',
+          },
+          {
             label: 'Discord',
             href: 'https://discord.gg/YUtRKAqty2',
             position: 'right',
