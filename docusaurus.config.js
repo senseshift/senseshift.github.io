@@ -101,8 +101,16 @@ const config = {
             title: 'Docs',
             items: [
               {
+                label: 'Getting Started',
+                to: '/docs/getting-started',
+              },
+              {
                 label: 'About',
                 to: '/docs/about',
+              },
+              {
+                label: 'Hardware',
+                to: '/docs/hardware',
               },
             ],
           },
