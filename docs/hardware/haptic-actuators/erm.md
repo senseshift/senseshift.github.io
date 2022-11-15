@@ -1,3 +1,7 @@
+---
+sidebar_position: 1
+---
+
 # ERM
 
 ERM stands for **eccentric rotating mass** and relies on small unbalanced mass attached to the DC motor axle that creates a displacement force when rotating.
@@ -62,7 +66,9 @@ Cored ERMs provide the strongest feedback of them all, in exchange for their bul
 
 ## Applying ERMs
 
+:::note
 There is no strict rules, how to apply different actuators, just a recommendation, based on personal experience.
+:::
 
 | ERM type                | Feedback Force | Vest | Glove | Facial Interface | Other wearable |
 | :---------------------- | :------------- | :--: | :---: | :--------------: | :------------: |
@@ -76,3 +82,13 @@ There is no strict rules, how to apply different actuators, just a recommendatio
 Most ERM actuators, even the smallest Coin ERMs, draw much more, than safe 20mA, that can be provided by ESP32, so **using a transistor is required** to wire an ERM actuator.
 
 In most cases, when building DIY OpenHaptics devices, using **ULN2803A** Darlington transistor array is the best way since it can power 8 devices at the same time, which pairs nicely with **PCA9685** 16-channel PWM driver.
+
+Since ERMs rely on PWM signal, following **PWM drivers** can be used:
+
+* Internal PWM generator
+* PCA9685
+
+## Credits
+
+- [Makeability Lab](https://makeabilitylab.github.io/physcomp/advancedio/vibromotor.html)
+- [Precision Microdrives](https://www.precisionmicrodrives.com/vibration-motors-erms-and-lras)
