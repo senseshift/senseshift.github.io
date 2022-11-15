@@ -4,62 +4,65 @@ import styles from './styles.module.css';
 
 type FeatureItem = {
   title: string;
-  Svg: React.ComponentType<React.ComponentProps<'svg'>>;
+  svg?: React.ComponentType<React.ComponentProps<'svg'>>;
   description: JSX.Element;
+  linkLabel?: string;
+  link?: string;
 };
 
 const FeatureList: FeatureItem[] = [
   {
-    title: 'Easy to Use',
-    Svg: require('@site/static/img/undraw_docusaurus_mountain.svg').default,
+    title: 'OpenSource',
     description: (
       <>
-        Docusaurus was designed from the ground up to be easily installed and
-        used to get your website up and running quickly.
+        OpenHaptics firmware is entirely open-source and available for everyone on GitHub.
       </>
     ),
+    linkLabel: 'Explore sources',
+    link: 'https://github.com/openhaptics',
   },
   {
-    title: 'Focus on What Matters',
-    Svg: require('@site/static/img/undraw_docusaurus_tree.svg').default,
+    title: 'Flexibility',
     description: (
       <>
-        Docusaurus lets you focus on your docs, and we&apos;ll do the chores. Go
-        ahead and move your docs into the <code>docs</code> directory.
+        <strong>OpenHaptics</strong> firmware allows you to build any configuration, that suits you the best.
       </>
     ),
+    linkLabel: 'Learn about flexibility',
+    link: '/docs/hardware',
   },
   {
-    title: 'Powered by React',
-    Svg: require('@site/static/img/undraw_docusaurus_react.svg').default,
+    title: 'Roadmap',
     description: (
       <>
-        Extend or customize your website layout by reusing React. Docusaurus can
-        be extended while reusing the same header and footer.
+        Everything about our process of development, next releases, and how you can get involved.
+        We're super excited about contributions, so please don't be shy!
       </>
     ),
+    linkLabel: 'Show the Roadmap',
+    link: '/docs/roadmap',
   },
 ];
 
-function Feature({title, Svg, description}: FeatureItem) {
+function Feature({title, svg: Svg, description, link, linkLabel}: FeatureItem) {
   return (
-    <div className={clsx('col col--4')}>
-      <div className="text--center">
-        <Svg className={styles.featureSvg} role="img" />
-      </div>
-      <div className="text--center padding-horiz--md">
-        <h3>{title}</h3>
-        <p>{description}</p>
-      </div>
+    <div className={styles.featuresItem}>
+      <h3>{title}</h3>
+      <p>{description}</p>
+      { link && (
+        <a className={styles.featuresItem__link} href={link} target={link.startsWith('http') ? '_blank' : '_self'}>
+          { linkLabel || 'Open' }
+        </a>
+      ) }
     </div>
   );
 }
 
 export default function HomepageFeatures(): JSX.Element {
   return (
-    <section className={styles.features}>
+    <section>
       <div className="container">
-        <div className="row">
+        <div className={styles.features}>
           {FeatureList.map((props, idx) => (
             <Feature key={idx} {...props} />
           ))}

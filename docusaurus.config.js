@@ -113,6 +113,11 @@ const config = {
                 label: 'Discord',
                 href: 'https://discord.gg/YUtRKAqty2',
               },
+            ],
+          },
+          {
+            title: 'More',
+            items: [
               {
                 label: 'GitHub',
                 href: 'https://github.com/openhaptics',
