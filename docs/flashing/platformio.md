@@ -4,6 +4,8 @@ sidebar_position: 0
 
 # PlatformIO IDE
 
+Flash OpenHaptics firmware using VSCode and PlatformIO IDE
+
 ## Prerequisites:
 
 1. Install Visual Studio Code: https://code.visualstudio.com/
@@ -37,4 +39,4 @@ Flash it using either **quick actions**, or by running `Flash` command from **Pr
 
 ## Editing source code
 
-If youre setup requires additional changes, select best suiting one, and edit it's source code. All firmware files are configured in `platformio.ini` and `ini/bhaptics.ini` files
+If youre setup requires additional changes, select best suiting target, and edit it's source code. All firmware files are configured in `platformio.ini` and `ini/bhaptics.ini` files. Read more about configuration [here](https://docs.platformio.org/en/latest/projectconf/index.html)
