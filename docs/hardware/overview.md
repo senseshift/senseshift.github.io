@@ -3,7 +3,7 @@ sidebar_position: 1
 slug: /hardware
 ---
 
-# Hardware
+# Hardware Overview
 
 OpenHaptics firmware supports a wide variety of different hardware: MCUs, haptic actuators, etc.
 

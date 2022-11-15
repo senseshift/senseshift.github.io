@@ -1,0 +1,8 @@
+{
+  "label": "Haptic Actuators",
+  "position": 3,
+  "link": {
+    "type": "doc",
+    "id": "hardware/haptic-actuators/overview"
+  }
+}

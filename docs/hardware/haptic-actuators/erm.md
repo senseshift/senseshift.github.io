@@ -1,0 +1,78 @@
+# ERM
+
+ERM stands for **eccentric rotating mass** and relies on small unbalanced mass attached to the DC motor axle that creates a displacement force when rotating.
+
+## ERM types
+
+:::note
+All categories were made up in the context of applying them in OpenHaptics
+:::
+
+### Coin ERMs
+
+The main advantage of Coin ERMs is their size &mdash; Coin ERMs are typically very small, in exchange for very weak feedback.
+
+Coin ERMs drove with 3V, but can be operated with 5V, though drawing much more current.
+
+<figure>
+  <video autoPlay loop muted playsInline style={{height: "250px"}} >
+    <source src={require('/static/video/CoinVibromotor_HowAMobilePhoneVibrationMotorLooksAndWorks_TrimmedOptimized.mp4').default} type="video/mp4" />
+  </video>
+  <figcaption >
+     A demonstration of an opened coin ERM from <a href="https://youtu.be/iwEGqBpYaqc" target="_blank">Tech Vision</a>. There is another <a href="https://youtu.be/lp7bwXXsVl8?t=537" target="_blank">great video</a> looking at a coin ERM with a microscope by Marty Jopson.
+  </figcaption>
+</figure>
+
+#### Example Coin ERMs
+
+* [Adafruit “Vibrating Mini-motor Disc”](https://www.adafruit.com/product/1201)
+
+### Cylindrical ERMs
+
+Cylindrical ERMs (also Coreless ERMs) are a step up from Coin ERMs. They provide much stronger feedback, usually drawing the same current as Coin ERMs in exchange for a bigger sizes.
+
+<figure>
+  <img src="https://www.precisionmicrodrives.com/wp-content/uploads/2021/06/exploded-coreless-dc-vibration-motor.original.jpg" style={{height: "350px"}} />
+
+  <figcaption>
+    Exploded view of Coreless Vibration Motor by <a href="https://www.precisionmicrodrives.com/eccentric-rotating-mass-vibration-motors-erms">Precision Microdrives</a>
+  </figcaption>
+</figure>
+
+#### Example Cylindrical ERMs
+
+* KPD7C-0716
+
+### Cored ERMs
+
+Cored ERMs provide the strongest feedback of them all, in exchange for their bulky size and larger current draw. Cored ERMs often rely on *brushes*, which **may cause sparks**.
+
+<figure>
+  <img src="https://cdn.shopify.com/s/files/1/0061/7735/7891/files/cored-dc-motor.jpg?v=1605188831" style={{height: "350px"}}  />
+
+  <figcaption>
+    Exploded view of Cored DC Motor
+  </figcaption>
+</figure>
+
+#### Example Cylindrical ERMs
+
+* PS4 Controller (DualShock 4) Rumble Motor
+* Xbox One Controller replacement motors ([1](https://www.precisionmicrodrives.com/new-xbox-one-controller-increasing-haptic-feedback-offering))
+
+## Applying ERMs
+
+There is no strict rules, how to apply different actuators, just a recommendation, based on personal experience.
+
+| ERM type                | Feedback Force | Vest | Glove | Facial Interface | Other wearable |
+| :---------------------- | :------------- | :--: | :---: | :--------------: | :------------: |
+| Coin ERM (3V)           | Weakest        | ❌   | ✅    | ✅              | ✅             |
+| Coin ERM (5V)           | Weak           | ✅   | ✅    | ✅              | ✅             |
+| Cylindrical (3V/5V)     | Medium         | ✅   | ❌    | ❌              | ✅             |
+| Cored Motor (3V/5V/12V) | Strong         | ✅   | ❌    | ❌              | ❌             |
+
+## Wiring ERMs
+
+Most ERM actuators, even the smallest Coin ERMs, draw much more, than safe 20mA, that can be provided by ESP32, so **using a transistor is required** to wire an ERM actuator.
+
+In most cases, when building DIY OpenHaptics devices, using **ULN2803A** Darlington transistor array is the best way since it can power 8 devices at the same time, which pairs nicely with **PCA9685** 16-channel PWM driver.
