@@ -71,6 +71,12 @@ const config = {
             label: 'About',
           },
           {
+            type: 'doc',
+            docId: 'hardware/overview',
+            position: 'left',
+            label: 'Hardware',
+          },
+          {
             label: 'Discord',
             href: 'https://discord.gg/YUtRKAqty2',
             position: 'right',
