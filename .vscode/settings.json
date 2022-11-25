@@ -1,0 +1,5 @@
+{
+    "yaml.schemas": {
+        "https://json.schemastore.org/github-workflow.json": "file:///home/leon0399/Documents/Development/leon0399/openhaptics.github.io/.github/workflows/deploy.yml"
+    }
+}
