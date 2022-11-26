@@ -19,4 +19,12 @@ Unfortunately, OpenHaptics cannot be used with ESP8266 MCUs, since it uses Bluet
 
 ## Arduino
 
-For the same reason, as ESP8266, Arduino boards cannot be used. You can **try** to use it with boards, listed on [ArduinoBLE library page](https://www.arduino.cc/reference/en/libraries/arduinoble/), but it has never been tested
+For the same reason, as ESP8266, most Arduino (AVR) boards cannot be used. 
+
+You can **try** to use it with boards, listed on [ArduinoBLE library page](https://www.arduino.cc/reference/en/libraries/arduinoble/), but it has never been tested
+
+## Raspberry Pi Pico
+
+Technically speaking, **RP2040**, heart of Raspberry Pi Pico, does have theoretical Bluetooth and Bluetooth LE support, but **BLE is not enabled** on the Raspberry's side, due to required cerification from Bluetooth SIG
+
+You can **try** using [Arduino Nano RP2040 Connect](https://store.arduino.cc/products/arduino-nano-rp2040-connect) or other boards, but it has never been tested
