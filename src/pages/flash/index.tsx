@@ -7,6 +7,7 @@ import BrowserOnly from '@docusaurus/BrowserOnly'
 import Admonition from '@theme/Admonition'
 import Link from '@docusaurus/Link';
 import Button from '../../components/Button';
+import Select from '../../components/Select';
 
 import { useIsWebserialSupported } from '../../hooks'
 
@@ -84,7 +85,7 @@ const FlashPage: FC = () => {
     () => releases && selectedTag && releases.data.find((release) => release.tag_name === selectedTag)?.assets,
     [ releases, selectedTag ]
   )
-  const [selectedBinary, selectBinary] = useState<string>()
+  const [selectedBinary, selectBinary] = useState<number>()
   useEffect(
     () => binaries && selectBinary(binaries[0].id),
     [ binaries ]
@@ -127,21 +128,41 @@ const FlashPage: FC = () => {
               <>
                 { error && <Error error={error} />}
 
-                <select value={selectedTag} onChange={handleTagSelect}>
-                  { releases && releases.data.map((release) => {
-                    return (
-                      <option key={`release-${release.id}`} value={release.tag_name}>{release.tag_name}</option>
-                    )
-                  }) }
-                </select>
-                <select>
-                  { binaries && binaries.map((asset) => {
-                    return (
-                      <option key={`asset-${asset.id}`} value={asset.id}>{asset.name}</option>
-                    )
-                  })}
-                </select>
-                <Button onClick={selectSerialDevice}>Connect</Button>
+                <div className='tw-max-w-md'>
+                  <div className='tw-grid tw-grid-cols-1 tw-gap-6'>
+                  <label className='tw-block'>
+                      Select version:
+                      <Select id="version" className='tw-block tw-w-full tw-mt-1' value={selectedTag} onChange={handleTagSelect}>
+                        { releases && releases.data.map((release) => {
+                          return (
+                            <option key={`release-${release.id}`} value={release.tag_name}>{release.tag_name}</option>
+                          )
+                        }) }
+                      </Select>
+                    </label>
+                    <label className='tw-block'>
+                      Select firmware:
+                      <Select id="binary" className='tw-block tw-w-full tw-mt-1'>
+                        { binaries && binaries.map((asset) => {
+                          return (
+                            <option key={`asset-${asset.id}`} value={asset.id}>{asset.name}</option>
+                          )
+                        })}
+                      </Select>
+                    </label>
+
+                    <div>
+                      <div className='mt-2'>
+                        <Button
+                          className='tw-block tw-w-full tw-mt-1'
+                          onClick={selectSerialDevice}
+                        >
+                          Connect
+                        </Button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </>
             )
           }}
