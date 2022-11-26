@@ -1,5 +1,6 @@
 ---
-sidebar_position: 0
+sidebar_position: 1
+sidebar_label: 'Option 1: PlatformIO IDE'
 ---
 
 # PlatformIO IDE
@@ -11,6 +12,7 @@ Flash OpenHaptics firmware using VSCode and PlatformIO IDE
 1. Install Visual Studio Code (VSCode): [Download][vscode]
 2. Download PlatformIO here: [Download][pio]
 3. *Recommended:* Git for Windows: [Download][git-windows]; other OS: https://git-scm.com/downloads
+4. Install drivers: [Guide](./drivers)
 
 ### Download and Install VSCode
 
