@@ -7,12 +7,12 @@ export interface WebSerialContextValue {
   isSupported: boolean
   error?: unknown
   port?: SerialPort
-  requestPort: (options?: SerialPortRequestOptions) => void
+  requestPort: (options?: SerialPortRequestOptions) => Promise<SerialPort|undefined>
 }
 
 const WebSerialContext = createContext<WebSerialContextValue>({
   isSupported: false,
-  requestPort: () => {},
+  requestPort: () => undefined,
 })
 
 const useWebSerial = () => useContext(WebSerialContext)
@@ -37,16 +37,20 @@ export const WebSerialProvider: FC<PropsWithChildren<WebSerialProviderProps>> = 
         // TODO: filters
         const port = await navigator.serial.requestPort(options)
         setPort(port)
+
+        return port;
       } catch (e) {
         setError(e)
       }
+
+      return undefined
     },
     [ isSupported ]
   )
 
   const contextValue = useMemo<WebSerialContextValue>(
     () => ({ isSupported, error, port, requestPort }),
-    [ isSupported, error ]
+    [ isSupported, error, port, requestPort ]
   )
 
   return (<WebSerialContext.Provider value={contextValue} {...props} />)

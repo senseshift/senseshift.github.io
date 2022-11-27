@@ -1,5 +1,6 @@
 ---
 sidebar_position: 2
+sidebar_label: 'Option 2: WebSerial Flash'
 ---
 import { WebSerialProvider } from '@site/src/context'
 import FlashFirmware from '@site/src/components/FlashFirmware'
@@ -18,7 +19,19 @@ I will not be responsible for any damages associated with this tool.
 ## Prerequisites
 
 1. Use **Chrome 89+**, **Microsoft Edge 89+**, **Opera 76+** or any other [supported browser](https://caniuse.com/web-serial).
+2. Install drivers: [Guide](./drivers)
 
 ## Flash firmware
 
-<WebSerialProvider><FlashFirmware /></WebSerialProvider>
+<WebSerialProvider>
+  <FlashFirmware />
+</WebSerialProvider>
+
+## Customizing and editing firmware
+
+**Unfortunately, it is impossible to customize firmware** at this point, if you planning to flash it using WebSerial Flasher.
+
+I'm currently working on newer version, that will allow you to customize all the components and motor layout, and flash firmware, that suits you the best!
+
+[GitHub Issue](#)
+

@@ -1,6 +1,7 @@
 import React, { useState, useMemo, useEffect, useCallback } from 'react'
-import { useWebSerial } from '../../context'
 import { useQuery } from '@tanstack/react-query'
+import { useWebSerial } from '../../context'
+import { useEspTool } from '../../hooks'
 
 import { Octokit } from '@octokit/core'
 
@@ -88,50 +89,48 @@ const FlashFirmware: FC<FlashFirmware> = () => {
 
   return (
     <BrowserOnly>
-      { () => {
-        return (
-          <>
-            { isWebSerialSupported || <WebSerialNotSupported /> }
-            { error && <Error error={error} />}
+      { () => (
+        <>
+          { isWebSerialSupported || <WebSerialNotSupported /> }
+          { error && <Error error={error} />}
 
-            <div className='tw-max-w-md'>
-              <div className='tw-grid tw-grid-cols-1 tw-gap-6'>
+          <div className='tw-max-w-md'>
+            <div className='tw-grid tw-grid-cols-1 tw-gap-6'>
+            <label className='tw-block'>
+                Select version:
+                <Select id="version" className='tw-block tw-w-full tw-mt-1' value={selectedTag} onChange={handleTagSelect}>
+                  { releases && releases.data.map((release) => {
+                    return (
+                      <option key={`release-${release.id}`} value={release.tag_name}>{release.tag_name}</option>
+                    )
+                  }) }
+                </Select>
+              </label>
               <label className='tw-block'>
-                  Select version:
-                  <Select id="version" className='tw-block tw-w-full tw-mt-1' value={selectedTag} onChange={handleTagSelect}>
-                    { releases && releases.data.map((release) => {
-                      return (
-                        <option key={`release-${release.id}`} value={release.tag_name}>{release.tag_name}</option>
-                      )
-                    }) }
-                  </Select>
-                </label>
-                <label className='tw-block'>
-                  Select firmware:
-                  <Select id="binary" className='tw-block tw-w-full tw-mt-1'>
-                    { binaries && binaries.map((asset) => {
-                      return (
-                        <option key={`asset-${asset.id}`} value={asset.id}>{asset.name}</option>
-                      )
-                    })}
-                  </Select>
-                </label>
+                Select firmware:
+                <Select id="binary" className='tw-block tw-w-full tw-mt-1'>
+                  { binaries && binaries.map((asset) => {
+                    return (
+                      <option key={`asset-${asset.id}`} value={asset.id}>{asset.name}</option>
+                    )
+                  })}
+                </Select>
+              </label>
 
-                <div>
-                  <div className='mt-2'>
-                    <Button
-                      className='tw-block tw-w-full tw-mt-1'
-                      onClick={selectSerialDevice}
-                    >
-                      Select device
-                    </Button>
-                  </div>
+              <div>
+                <div className='mt-2'>
+                  <Button
+                    className='tw-block tw-w-full tw-mt-1'
+                    onClick={selectSerialDevice}
+                  >
+                    Select device
+                  </Button>
                 </div>
               </div>
             </div>
-          </>
-        )
-      }}
+          </div>
+        </>
+      ) }
     </BrowserOnly>
   )
 }
