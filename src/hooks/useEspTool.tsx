@@ -1,5 +1,4 @@
-import React, { useCallback, useMemo } from 'react'
-
+import { useMemo } from 'react'
 import { EspLoader } from 'esptool.ts'
 
 interface EspToolHookProps {
@@ -8,14 +7,7 @@ interface EspToolHookProps {
 const useEspTool = ({ port }: EspToolHookProps) => {
   const loader = useMemo(() => new EspLoader(port), [ port ])
 
-  const connect = useCallback(
-    () => [
-
-    ],
-    [ loader ]
-  )
-
-  return {}
+  return loader
 }
 
 export default useEspTool

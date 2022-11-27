@@ -8,11 +8,13 @@ export interface WebSerialContextValue {
   error?: unknown
   port?: SerialPort
   requestPort: (options?: SerialPortRequestOptions) => Promise<SerialPort|undefined>
+  connect: (options: SerialOptions) => Promise<SerialPort|false>
 }
 
 const WebSerialContext = createContext<WebSerialContextValue>({
   isSupported: false,
   requestPort: () => undefined,
+  connect: () => Promise.resolve(false),
 })
 
 const useWebSerial = () => useContext(WebSerialContext)
@@ -28,8 +30,33 @@ export const WebSerialProvider: FC<PropsWithChildren<WebSerialProviderProps>> = 
   useEffect(() => isBrowser && setSupported(navigator.serial !== undefined), [isBrowser, setSupported])
 
   const [ port, setPort ] = useState<SerialPort>()
+  useEffect(
+    () => {
+      if (!port) return
+
+      const connectListener = (port: SerialPort, e: Event): any => {
+        console.log(port, e)
+      }
+      const disconnectListener = (port: SerialPort, e: Event): any => {
+        console.log(port, e)
+      }
+
+      // @ts-ignore
+      port.addEventListener('connect', connectListener, false)
+      // @ts-ignore
+      port.addEventListener('disconnect', disconnectListener, false)
+
+      return () => {
+        // @ts-ignore
+        port.removeEventListener('connect', connectListener, false)
+        // @ts-ignore
+        port.removeEventListener('disconnect', disconnectListener, false)
+      }
+    },
+    [ port ]
+  )
   const requestPort = useCallback(
-    async (options) => {
+    async (options?) => {
       try {
         // TODO: auto-select
         // const availablePorts = await navigator.serial.getPorts()
@@ -48,9 +75,30 @@ export const WebSerialProvider: FC<PropsWithChildren<WebSerialProviderProps>> = 
     [ isSupported ]
   )
 
+  const connect = useCallback(
+    async (options: SerialOptions): Promise<SerialPort|false> => {
+      const _port = port || await requestPort()
+
+      if (!_port) {
+        return false
+      }
+
+      try {
+        await _port.open(options)
+        return _port
+      } catch (e) {
+        setError(e)
+      }
+
+      return false
+    },
+    [ port ]
+  )
+
+
   const contextValue = useMemo<WebSerialContextValue>(
-    () => ({ isSupported, error, port, requestPort }),
-    [ isSupported, error, port, requestPort ]
+    () => ({ isSupported, error, port, requestPort, connect }),
+    [ isSupported, error, port, requestPort, connect ]
   )
 
   return (<WebSerialContext.Provider value={contextValue} {...props} />)
