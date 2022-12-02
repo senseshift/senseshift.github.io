@@ -18,6 +18,7 @@ const Button: FC<ComponentProps<typeof Link> & ComponentProps<'button'>> = ({ cl
             tw-py-2 tw-px-3
             tw-text-base tw-leading-normal
             tw-shadow-sm
+            hover:tw-bg-gray-100 hover:tw-cursor-pointer
             focus:tw-outline-none focus:tw-border-indigo-300 focus:tw-ring focus:tw-ring-indigo-200 focus:tw-ring-opacity-50
           `,
           className

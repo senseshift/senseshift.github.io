@@ -51,6 +51,8 @@ export const WebSerialProvider: FC<PropsWithChildren<WebSerialProviderProps>> = 
         port.removeEventListener('connect', connectListener, false)
         // @ts-ignore
         port.removeEventListener('disconnect', disconnectListener, false)
+
+        port.close()
       }
     },
     [ port ]

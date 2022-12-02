@@ -1,13 +1,8 @@
-import { useMemo } from 'react'
+import { useEffect, useMemo } from 'react'
 import { EspLoader } from 'esptool.ts'
 
-interface EspToolHookProps {
-  port: SerialPort
-}
-const useEspTool = ({ port }: EspToolHookProps) => {
-  const loader = useMemo(() => new EspLoader(port), [ port ])
-
-  return loader
+const useEspTool = (port: SerialPort): EspLoader => {
+  return useMemo(() => new EspLoader(port), [ port ])
 }
 
 export default useEspTool

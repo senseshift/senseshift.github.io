@@ -1,6 +1,7 @@
 import React, { type FC } from 'react'
 
 import Layout from '@theme/Layout'
+
 import { WebSerialProvider } from '@site/src/context'
 import FlashFirmware from '@site/src/components/FlashFirmware'
 
