@@ -1,0 +1,42 @@
+---
+sidebar_position: 2
+sidebar_label: 'Option 2: WebSerial Flash'
+---
+import { WebSerialProvider } from '@site/src/context'
+import FlashFirmware from '@site/src/components/FlashFirmware'
+
+# WebSerial Flasher
+
+Flash firmware using Chrome, Microsoft Edge or Opera browser
+
+:::danger
+
+WebSerial Flasher is in very early stages of alfa testing. There is absolutely no warranty, take actions at your OWN risk.
+I will not be responsible for any damages associated with this tool.
+
+:::
+
+## Prerequisites
+
+1. Use **Chrome 89+**, **Microsoft Edge 89+**, **Opera 76+** or any other [supported browser](https://caniuse.com/web-serial).
+2. Install drivers: [Guide](./drivers)
+
+## Flash firmware
+
+<WebSerialProvider>
+  <FlashFirmware />
+</WebSerialProvider>
+
+## Customizing and editing firmware
+
+:::note
+
+**Unfortunately, it is impossible to customize firmware** at this point, if you planning to flash it using WebSerial Flasher.
+
+Use [PlatformIO](./platformio) instead
+
+:::
+
+I'm currently working on newer version, that will allow you to customize all the components and motor layout, and flash firmware, that suits you the best!
+You can keep track of it in this [GitHub Issue](https://github.com/openhaptics/openhaptics-firmware/milestone/4)
+
