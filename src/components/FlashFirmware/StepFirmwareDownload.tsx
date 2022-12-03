@@ -8,12 +8,16 @@ import Button from '../Button'
 import type { FirmwareManifest } from './types'
 
 const makeManifestFromArchive = async (archive: File): Promise<FirmwareManifest> => {
-  if (archive.type !== 'application/x-zip-compressed') {
+  console.debug('archive', archive)
+
+  if (!['application/x-zip-compressed', 'application/zip'].includes(archive.type)) {
     return // TODO: display error
   }
 
   const reader = new ZipReader(new BlobReader(archive))
   const contents = await reader.getEntries()
+
+  console.debug('read contents', contents)
 
   const manifestEntry = contents.find((e) => e.filename === 'manifest.json')
   if (!manifestEntry) {
