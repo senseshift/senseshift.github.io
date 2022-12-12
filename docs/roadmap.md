@@ -2,18 +2,17 @@
 
 # WIP
 
-- [ ] WebSerial flasher/installer ([GitHub Issue](https://github.com/openhaptics/openhaptics-firmware/issues/6))
+- [ ] Build Guides
+- [ ] DK (breakout) boards
 - [ ] Battery Level Gauge ([GitHub Issue](https://github.com/openhaptics/openhaptics-firmware/issues/17))
+- [ ] *OpenHaptics Connect* application (bHaptics Player replacement) ([GitHub Repository](https://github.com/openhaptics/unihaptics-connect))
 
 # Planned
 
-- [ ] Build Guides
-- [ ] DK (breakout) boards
 - [ ] GUI Firmware Configurator
 - [ ] TENS/FES haptic feedback
-- [ ] *OpenHaptics Connect* application (bHaptics Player replacement)
 - [ ] Thermal Feedback
 
 # Implemented
 
--
+- [x] WebSerial flasher/installer ([GitHub Issue](https://github.com/openhaptics/openhaptics-firmware/issues/6))

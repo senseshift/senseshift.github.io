@@ -52,7 +52,7 @@ const StepFirmwareConfigure: FC<StepFirmwareConfigureProps> = ({ onSubmit }) => 
         Select version:
         <Select
           id="version"
-          className='tw-block tw-w-full tw-mt-1'
+          className='tw-block tw-w-full tw-mt-1 tw-form-input'
           value={selectedTag}
           onChange={(e) => { selectTag(e.target.value) }}
         >
@@ -70,7 +70,7 @@ const StepFirmwareConfigure: FC<StepFirmwareConfigureProps> = ({ onSubmit }) => 
         Select firmware:
         <Select
           id="binary"
-          className='tw-block tw-w-full tw-mt-1'
+          className='tw-block tw-w-full tw-mt-1 tw-form-input'
           value={selectedAsset}
           onChange={(e) => { selectAsset(e.target.value) }}
         >
