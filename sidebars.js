@@ -5,6 +5,7 @@ const sidebars = {
   docs: [
     'getting-started',
     'about',
+    'building-first-device',
     {
       type: 'category',
       label: 'Flashing Firmware',

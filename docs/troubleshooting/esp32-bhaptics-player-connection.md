@@ -4,8 +4,8 @@
 
 [GitHub Issue](https://github.com/openhaptics/openhaptics-firmware/issues/32)
 
-:::note 
-Remember to always follow the troubleshooting steps in the correct order, and to consult with our community on Discord if you need additional help or guidance. 
+:::note
+Remember to always follow the troubleshooting steps in the correct order, and to consult with our community on [Discord](https://discord.gg/YUtRKAqty2) if you need additional help or guidance.
 :::
 
 ### Troubleshooting steps
