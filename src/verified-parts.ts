@@ -13,6 +13,25 @@ export type RegionalLinkArray = [RegionalLink, ...RegionalLink[]] // At least 1 
 export type RegionalPartLinks = Partial<Record<Region, RegionalLinkArray>> & { Global: RegionalLinkArray } // Global is required
 export type VerifiedParts = Record<string, RegionalPartLinks>
 
+export const normalizeLink = (link: RegionalLink): RegionalLinkObject => {
+  if (Array.isArray(link)) {
+    const qtyPer = link[2] ?? 1
+
+    return {
+      suffix: qtyPer > 1 ? `${qtyPer} pcs` : undefined,
+      url: link[0],
+      pricePer: link[1],
+      qtyPer: qtyPer,
+    }
+  }
+
+  if (typeof link === 'object') {
+    return link
+  }
+
+  throw new Error('Unknown link format')
+}
+
 const esp32devkitcv4: RegionalPartLinks = {
   'Global': [
     ['https://aliexpress.ru/item/32864722159.html?sku_id=12000028745117645', 3.13],

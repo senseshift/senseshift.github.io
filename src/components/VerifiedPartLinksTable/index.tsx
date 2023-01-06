@@ -1,6 +1,6 @@
-import React, { useCallback, useEffect, useMemo, type ReactNode } from 'react'
-import LinkList from '../VerifiedParts/LinkList'
-import verifiedParts, { type VerifiedParts, type Region } from '@site/src/verified-parts'
+import React, { useMemo } from 'react'
+import verifiedParts, { type VerifiedParts } from '@site/src/verified-parts'
+import LinkList from './LinkList'
 
 interface IVerifiedPartLinksTableProps<P extends VerifiedParts> {
   part: keyof P
@@ -28,7 +28,7 @@ const VerifiedPartLinksTable = <P extends VerifiedParts = typeof verifiedParts>(
       </thead>
       <tbody>
         { Object.entries(currentPartLinks).map(([region, links]) => (
-          <tr>
+          <tr key={region}>
             <td className='tw-text-left'>{region}</td>
             <td className='tw-text-left tw-align-text-top'>
               <LinkList links={links} />

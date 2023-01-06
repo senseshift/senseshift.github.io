@@ -6,6 +6,7 @@ import React, {
 
 import Link from '@docusaurus/Link'
 import verifiedParts, {
+  normalizeLink,
   type VerifiedParts as IVerifiedParts,
   type RegionalLink,
   type RegionalLinkObject,
@@ -18,25 +19,6 @@ import Select from '../Select'
 import { getWebsiteTitle } from './utils'
 
 const SHIPPING_MODIFIER = 1.2
-
-const normalizeLink = (link: RegionalLink): RegionalLinkObject => {
-  if (Array.isArray(link)) {
-    const qtyPer = link[2] ?? 1
-
-    return {
-      suffix: qtyPer > 1 ? `${qtyPer} pcs` : undefined,
-      url: link[0],
-      pricePer: link[1],
-      qtyPer: qtyPer,
-    }
-  }
-
-  if (typeof link === 'object') {
-    return link
-  }
-
-  throw new Error('Unknown link format')
-}
 
 interface IPartRowProps<P extends IVerifiedParts = typeof verifiedParts> {
   partName: IPartName<P>
