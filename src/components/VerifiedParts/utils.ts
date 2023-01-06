@@ -38,16 +38,28 @@ export const normalizePart = <P extends IVerifiedParts = typeof verifiedParts>(p
 export const getWebsiteTitle = (link: RegionalLinkObject): string => {
   const url = link.url
 
-  if (url.includes('aliexpress')) {
+  if (url.includes('aliexpress.')) {
     return 'AliExpress'
   }
 
-  if (url.includes('amazon')) {
+  if (url.includes('amazon.')) {
     return 'Amazon'
   }
 
-  if (url.includes('adafruit')) {
+  if (url.includes('adafruit.')) {
     return 'Adafruit'
+  }
+
+  if (url.includes('vrcover')) {
+    if (url.includes('int.vrcover')) {
+      return 'VR\u00A0Cover\u00A0(International)'
+    }
+    if (url.includes('us.vrcover')) {
+      return 'VR\u00A0Cover\u00A0(US)'
+    }
+    if (url.includes('eu.vrcover')) {
+      return 'VR\u00A0Cover\u00A0(Europe)'
+    }
   }
 
   return 'Other'

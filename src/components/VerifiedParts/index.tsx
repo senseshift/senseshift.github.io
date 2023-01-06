@@ -64,14 +64,18 @@ const VerifiedParts = <P extends IVerifiedParts = typeof verifiedParts>(
         </Select>
       </label>
 
-      <table className='tw-table-auto tw-w-full tw-border-collapse'>
+      <table className='tw-table-auto tw-w-full tw-border-collapse tw-table'>
         <thead>
           <tr>
             <th className='tw-text-left'>Component</th>
             <th className='tw-text-left'>Choice</th>
             <th className='tw-text-right'>Amount</th>
             <th className='tw-text-right'>Cost&nbsp;per</th>
-            <th className='tw-text-right'>Approx.&nbsp;cost&nbsp;<small>(w\&nbsp;shipping)</small></th>
+            <th className='tw-text-right'>
+              Approx.&nbsp;cost
+              <br />
+              <small>(w\&nbsp;shipping)</small>
+            </th>
             <th className='tw-text-left'>Quick&nbsp;Link</th>
           </tr>
         </thead>

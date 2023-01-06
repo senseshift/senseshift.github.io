@@ -1,0 +1,102 @@
+---
+sidebar_label: 'ESP32 and Breadboard'
+
+title: 'Guide: Building DIY Haptic Face Interface for Meta Quest 2'
+---
+import VerifiedParts from '@site/src/components/VerifiedParts'
+import verifiedParts from '@site/src/verified-parts'
+
+# Building Haptic Face Interface for Quest 2
+
+Haptic Face Interface is the easiest OpenHaptics device you can build, and we recommend starting your journey with OpenHaptics with it! With 6 Haptic Feedback Points, you will deeply improve your immersion by feeling every touch and punch into your face.
+
+Our Face Interface is supported by many games and works great with Standalone VR headsets, such as Meta Quest 2. It achieves it by providing a compatability layer for bHaptics, making it possible to support **bHaptics Tactal** supported games.
+
+## Prerequesites
+
+1. Oculus Quest 2
+2. Soldering skills or will to learn
+
+## Build Guide
+
+### Step 1: Purchasing required components
+
+A small variety of hardware components is required to build yout DIY Haptic Face Interface. You can find a table with list of required components below. You'll also need some tools, sush as Soldering Iron for device assembly.
+
+<VerifiedParts
+  parts={[
+    'ESP32-DevKitC V4',
+    'Half Sized Breadboard',
+    'ULN2803',
+    ['Coin Vibration Motor', 6],
+    'Wires for soldering',
+    'Facial Interface for Quest\u00A02',
+  ]}
+  allParts={
+    Object.assign({}, verifiedParts, {
+      'Facial Interface for Quest\u00A02': {
+        'Global': [
+          {
+            suffix: 'KIWI Design',
+            url: 'https://www.aliexpress.com/item/1005001962531119.html',
+            pricePer: 29.00,
+          },
+          {
+            suffix: 'BOBOVR F2',
+            url: 'https://www.aliexpress.com/item/1005004346161285.html',
+            pricePer: 62.00,
+          },
+          ['https://int.vrcover.com/collections/facial-interface-foam-replacements/products/facial-interface-foam-replacement-basic-set-for-oculus%E2%84%A2-quest-2', 29.00],
+        ],
+        'North America': [
+          ['https://us.vrcover.com/collections/facial-interface-foam-replacements/products/facial-interface-foam-replacement-set-for-oculus%E2%84%A2-quest-2-standard-edition', 29.00],
+        ],
+        'Europe': [
+          ['https://eu.vrcover.com/collections/facial-interface-foam-replacements/products/facial-interface-foam-replacement-basic-set-for-oculus%E2%84%A2-quest-2', 29.00],
+        ],
+      }
+    })
+  }
+/>
+
+### Step 2: Connect ULN2803
+
+Insert your ULN2803 Darlington transistor arrays into the left-most part of your breadboard. Make sure, that _indent_ on ULN2803 is _on the left_, and _red line_ is on the _bottom_ of your breadboard. Connect `GND` and `5V` wires according to diagram below.
+
+| Wiring Diagram | Photo |
+| :------------: | :---: |
+| ![ULN2803 on Breadboard](./assets/quest2-esp32-breadboard/schematic-step-2.png) |  |
+
+### Step 3: Wire vibration motors
+
+Solder your Vibration Motor wires as per diagram below. Your _red_ wires have to be connected into one line, and each _blue_ wire connected to ULN2803 separately.
+
+| Wiring Diagram | Photo |
+| :------------: | :---: |
+| ![Wired vibration motors](./assets/quest2-esp32-breadboard/schematic-step-3.png) |  |
+
+### Step 4: Connect ESP32 power pins
+
+Insert your ESP32 into the right-most part of your breadboard. Make sure, that you have a single row of non-obstructed below your ESP32 to connect wires later. Connect `5V` pin with _red_ line and `GND` pin with _blue_ line with jumper wires.
+
+| Wiring Diagram | Photo |
+| :------------: | :---: |
+| ![Wired ESP32 power](./assets/quest2-esp32-breadboard/schematic-step-4.png) |  |
+
+### Step 5: Connect ESP32 data PWM pins
+
+Connect pins `IO14`, `IO27`, `IO26`, `IO25`, `IO33`, `IO32` with your ULN2803 with jumper wires array as per diagram below.
+
+| Wiring Diagram | Photo |
+| :------------: | :---: |
+| ![Wired ESP32 PWM](./assets/quest2-esp32-breadboard/schematic-step-final.png) |  |
+
+## Final Result
+
+### Final Wiring Diagram
+
+<img
+  src={require('./assets/quest2-esp32-breadboard/schematic-step-final.png').default}
+  alt="Final Wiring Diagram"
+  className='tw-max-w-[512px]'
+/>

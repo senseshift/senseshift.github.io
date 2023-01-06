@@ -48,28 +48,49 @@ const coinVibrationMotor: RegionalPartLinks = {
   ]
 }
 
-const verifyedParts: VerifiedParts = {
-  'ESP32-DevKitC V4': esp32devkitcv4,
-  'Half Sized Breadboard': {
-    'Global': [
-      {
-        suffix: 'kit with Jumper Wires',
-        url: 'https://www.aliexpress.com/item/32523839459.html?sku_id=12000017755573336',
-        pricePer: 2.89
-      },
-      ['https://www.aliexpress.com/item/32523839459.html?sku_id=12000017755573330', 1.29],
-    ],
-    'North America': [
-      ['https://www.adafruit.com/product/64', 4.95],
-      {
-        suffix: 'with Mounting Holes',
-        url: 'https://www.adafruit.com/product/4539',
-        pricePer: 5.00
-      },
-    ],
-  },
-  'ULN2803': uln2803,
-  'Coin Vibration Motor': coinVibrationMotor,
+const breadboardHalf: RegionalPartLinks = {
+  'Global': [
+    {
+      suffix: 'kit with Jumper Wires',
+      url: 'https://www.aliexpress.com/item/32523839459.html?sku_id=12000017755573336',
+      pricePer: 2.89
+    },
+    ['https://www.aliexpress.com/item/32523839459.html?sku_id=12000017755573330', 1.29],
+  ],
+  'North America': [
+    ['https://www.adafruit.com/product/64', 4.95],
+    {
+      suffix: 'with Mounting Holes',
+      url: 'https://www.adafruit.com/product/4539',
+      pricePer: 5.00
+    },
+  ],
 }
 
-export default verifyedParts
+const jumperWires: RegionalPartLinks = {
+  'Global': [
+    ['https://www.aliexpress.com/item/32725034190.html', 1.09],
+  ],
+}
+
+const wiresForSoldering: RegionalPartLinks = {
+  'Global': [
+    {
+      suffix: '26AWG, 10m',
+      url: 'https://www.aliexpress.com/item/1005002632016529.html',
+      qtyPer: 5,
+      pricePer: 2.37,
+    },
+  ],
+}
+
+const verifiedParts: VerifiedParts = {
+  'ESP32-DevKitC V4': esp32devkitcv4,
+  'ULN2803': uln2803,
+  'Coin Vibration Motor': coinVibrationMotor,
+  'Half Sized Breadboard': breadboardHalf,
+  'Jumper Wires': jumperWires,
+  'Wires for soldering': wiresForSoldering,
+}
+
+export default verifiedParts
