@@ -1,25 +1,13 @@
-import React, { useCallback, useEffect, useMemo, type FC } from 'react'
+import React, { useCallback, useEffect, useMemo, type ReactNode } from 'react'
+import LinkList from '../VerifiedParts/LinkList'
 import verifiedParts, { type VerifiedParts, type Region } from '@site/src/verified-parts'
-import Link from '@docusaurus/Link'
 
-interface Props<P extends VerifiedParts> {
+interface IVerifiedPartLinksTableProps<P extends VerifiedParts> {
   part: keyof P
   allParts: P
 }
 
-const getWebsiteTitle = (url: string) => {
-  if (url.includes('aliexpress')) {
-    return 'AliExpress'
-  }
-
-  if (url.includes('amazon')) {
-    return 'Amazon'
-  }
-
-  return 'Other'
-}
-
-const VerifiedPartLinksTable = <P extends VerifiedParts = typeof verifiedParts>(props: Props<P>) => {
+const VerifiedPartLinksTable = <P extends VerifiedParts = typeof verifiedParts>(props: IVerifiedPartLinksTableProps<P>) => {
   const {
     part,
     allParts = verifiedParts
@@ -43,15 +31,7 @@ const VerifiedPartLinksTable = <P extends VerifiedParts = typeof verifiedParts>(
           <tr>
             <td className='tw-text-left'>{region}</td>
             <td className='tw-text-left tw-align-text-top'>
-              <ul>
-                {
-                  links.map(link => (
-                    <li>
-                      <Link to={link} target={'_blank'}>{getWebsiteTitle(link)}</Link>
-                    </li>
-                  ))
-                }
-              </ul>
+              <LinkList links={links} />
             </td>
           </tr>
         )) }
