@@ -1,0 +1,26 @@
+spellchecker: aspell
+matrix:
+  - name: Markdown
+    aspell:
+      lang: en
+    dictionary:
+      wordlists:
+        - .github/wordlist.txt
+      encoding: utf-8
+    pipeline:
+      - pyspelling.filters.markdown:
+          markdown_extensions:
+            - pymdownx.extra:
+      - pyspelling.filters.html:
+          comments: true
+          attributes:
+            - title
+            - alt
+          ignores:
+            - ':matches(code, pre)'
+            - 'code'
+            - 'pre'
+    sources:
+      - '**/*.md'
+      - '**/*.mdx'
+    default_encoding: utf-8
