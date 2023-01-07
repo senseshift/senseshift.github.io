@@ -56,7 +56,7 @@ const VerifiedParts = <P extends IVerifiedParts = typeof verifiedParts>(
         <span>Region:</span>
         <Select
           id="region"
-          className='tw-inline-block tw-ml-4'
+          className='tw-inline-block tw-ml-2'
           value={region}
           onChange={(e) => { setRegion(e.target.value as Region) }}
         >
@@ -64,37 +64,40 @@ const VerifiedParts = <P extends IVerifiedParts = typeof verifiedParts>(
         </Select>
       </label>
 
-      <table className='tw-table-auto tw-w-full tw-border-collapse tw-table'>
-        <thead>
-          <tr>
-            <th className='tw-text-left'>Component</th>
-            <th className='tw-text-left'>Choice</th>
-            <th className='tw-text-right'>Amount</th>
-            <th className='tw-text-right'>Cost&nbsp;per</th>
-            <th className='tw-text-right'>
-              Approx.&nbsp;cost
-              <br />
-              <small>(w\&nbsp;shipping)</small>
-            </th>
-            <th className='tw-text-left'>Quick&nbsp;Link</th>
-          </tr>
-        </thead>
-        <tbody>
-          { normalizedParts.map(({ partName, qty = 1}) => {
-            const links = (region !== 'Global' && currentParts[partName][region])
-              ? [...currentParts[partName]['Global'], ...currentParts[partName][region]] as RegionalLinkArray
-              : currentParts[partName]['Global']
+      <div className='tw-w-full tw-overflow-auto'>
+        <table className='tw-table tw-table-auto tw-min-w-full verified-parts__table'>
+          <thead>
+            <tr>
+              <th className='tw-text-left'>Component</th>
+              <th className='tw-text-left'>Choice</th>
+              <th className='tw-text-right'>Amount</th>
+              <th className='tw-text-right'>Cost&nbsp;per</th>
+              <th className='tw-text-right'>
+                Approx.&nbsp;cost
+                <br />
+                <small>(w\&nbsp;shipping)</small>
+              </th>
+              <th className='tw-text-left'>Quick&nbsp;Link</th>
+            </tr>
+          </thead>
+          <tbody>
+            { normalizedParts.map(({ partName, qty = 1}, index) => {
+              const links = (region !== 'Global' && currentParts[partName][region])
+                ? [...currentParts[partName]['Global'], ...currentParts[partName][region]] as RegionalLinkArray
+                : currentParts[partName]['Global']
 
-            return (
-              <PartRow
-                partName={partName}
-                qty={qty}
-                links={links}
-              />
-            )
-          }) }
-        </tbody>
-      </table>
+              return (
+                <PartRow
+                  key={index}
+                  partName={partName}
+                  qty={qty}
+                  links={links}
+                />
+              )
+            }) }
+          </tbody>
+        </table>
+      </div>
     </>
   )
 }

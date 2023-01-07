@@ -46,8 +46,12 @@ export const getWebsiteTitle = (link: RegionalLinkObject): string => {
     return 'Amazon'
   }
 
-  if (url.includes('adafruit.')) {
+  if (url.includes('adafruit.com')) {
     return 'Adafruit'
+  }
+
+  if (url.includes('meta.com')) {
+    return 'Meta'
   }
 
   if (url.includes('vrcover')) {
