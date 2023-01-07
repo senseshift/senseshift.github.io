@@ -11,6 +11,7 @@ matrix:
       - pyspelling.filters.markdown:
           markdown_extensions:
             - pymdownx.extra:
+            - markdown.extensions.extra:
       - pyspelling.filters.html:
           comments: true
           attributes:
@@ -20,6 +21,7 @@ matrix:
             - ':matches(code, pre)'
             - 'code'
             - 'pre'
+      - pyspelling.filters.url:
     sources:
       - '**/*.md'
       - '**/*.mdx'
