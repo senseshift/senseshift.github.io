@@ -74,7 +74,7 @@ If you've decided not to download Git client, you can download latest firmware a
 
 ## Building and uploading firmware
 
-Open project directory (extract archive if needed) in VSCode with PlatformIO exension and choose desired firmware target
+Open project directory (extract archive if needed) in VSCode with PlatformIO extension and choose desired firmware target
 Flash it using either **quick actions**, or by running `Flash` command from **Project Tasks** list (see screenshot below)
 
 <details>
@@ -90,7 +90,7 @@ Flash it using either **quick actions**, or by running `Flash` command from **Pr
 
 ## Customizing and editing firmware
 
-If youre setup requires additional changes, select best suiting target, and edit it's source code. All firmware files are configured in `platformio.ini` and `ini/bhaptics.ini` files. Read more about configuration [here](https://docs.platformio.org/en/latest/projectconf/index.html)
+If your setup requires additional changes, select best suiting target, and edit it's source code. All firmware files are configured in `platformio.ini` and `ini/bhaptics.ini` files. Read more about configuration [here](https://docs.platformio.org/en/latest/projectconf/index.html)
 
 [vscode]: https://code.visualstudio.com/download
 [pio]: https://platformio.org/platformio-ide

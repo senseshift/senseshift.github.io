@@ -1,0 +1,37 @@
+spellchecker: aspell
+matrix:
+  - name: Markdown
+    aspell:
+      lang: en
+    dictionary:
+      wordlists:
+        - .github/wordlist.txt
+      encoding: utf-8
+    pipeline:
+      - pyspelling.filters.markdown:
+          markdown_extensions:
+            - pymdownx.extra:
+            - markdown.extensions.extra:
+      - pyspelling.filters.html:
+          comments: true
+          attributes:
+            - title
+            - alt
+          ignores:
+            - ':matches(code, pre)'
+            - 'code'
+            - 'pre'
+      - pyspelling.filters.context:
+          context_visible_first: true
+          delimiters:
+            # Ignore MDX imports
+            - open: '^import '
+              close: " from '.*?'"
+      - pyspelling.filters.url:
+    sources:
+      - './*.md'
+      - 'docs/**/*.md'
+      - 'docs/**/*.mdx'
+      - 'guides/**/*.md'
+      - 'guides/**/*.mdx'
+    default_encoding: utf-8

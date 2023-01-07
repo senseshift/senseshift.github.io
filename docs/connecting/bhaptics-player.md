@@ -6,7 +6,7 @@ OpenHaptics devices support connecting to **bHaptics Player** on all platforms, 
 2. Turn on Bluetooth
 3. Connect to appropriate device
 
-| Plarform   | Versions              |
+| Platform   | Versions              |
 | :--------- | :-------------------- |
 | PC         | `1.7.3.1`, `1.8.2.1`, `1.8.2.2`  |
 | Android    | `TBA`                 |

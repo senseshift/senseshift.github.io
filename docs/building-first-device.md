@@ -30,7 +30,7 @@ You might also require some consumables, like Breadboard and jumper wires, and s
 ### Step 3: Assembly according to schematic
 
 Assembly all components according to wiring diagram, shown on GitHub page of previously selected schematic. Connect wires on a breadboard, as shown on an image.
-Make sure you connected everything coorectly. **Components can be physically damaged, if attached incorrectly!**
+Make sure you connected everything correctly. **Components can be physically damaged, if attached incorrectly!**
 
 ### Step 4: Flash firmware and test your assembly
 
