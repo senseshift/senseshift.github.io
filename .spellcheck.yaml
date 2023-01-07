@@ -21,8 +21,17 @@ matrix:
             - ':matches(code, pre)'
             - 'code'
             - 'pre'
+      - pyspelling.filters.context:
+          context_visible_first: true
+          delimiters:
+            # Ignore MDX imports
+            - open: '^import '
+              close: " from '.*?'"
       - pyspelling.filters.url:
     sources:
-      - '**/*.md'
-      - '**/*.mdx'
+      - './*.md'
+      - 'docs/**/*.md'
+      - 'docs/**/*.mdx'
+      - 'guides/**/*.md'
+      - 'guides/**/*.mdx'
     default_encoding: utf-8
