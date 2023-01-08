@@ -56,11 +56,9 @@ const StepFirmwareConfigure: FC<StepFirmwareConfigureProps> = ({ onSubmit }) => 
           value={selectedTag}
           onChange={(e) => { selectTag(e.target.value) }}
         >
-          { releases && releases.map((release) => {
-            return (
+          { releases && releases.map((release) => (
               <option key={`release-${release.id}`} value={release.tag_name}>{release.tag_name}</option>
-            )
-          }) }
+            )) }
         </Select>
       </label>
 

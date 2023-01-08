@@ -72,6 +72,13 @@ const config = {
           },
           {
             type: 'doc',
+            docsPluginId: 'guides',
+            docId: 'getting-started',
+            position: 'left',
+            label: 'Guides',
+          },
+          {
+            type: 'doc',
             docId: 'hardware/overview',
             position: 'left',
             label: 'Hardware',
@@ -142,6 +149,16 @@ const config = {
     }),
 
   plugins: [
+    [
+      '@docusaurus/plugin-content-docs',
+      {
+        id: 'guides',
+        path: 'guides',
+        routeBasePath: 'guides',
+        sidebarPath: require.resolve('./sidebarsGuides.js'),
+        // ... other options
+      },
+    ],
     async (context, options) => {
       return {
         name: "docusaurus-tailwindcss",

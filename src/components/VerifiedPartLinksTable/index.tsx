@@ -1,25 +1,13 @@
-import React, { useCallback, useEffect, useMemo, type FC } from 'react'
-import verifiedParts, { type VerifiedParts, type Region } from '@site/src/verified-parts'
-import Link from '@docusaurus/Link'
+import React, { useMemo } from 'react'
+import verifiedParts, { type VerifiedParts } from '@site/src/verified-parts'
+import LinkList from './LinkList'
 
-interface Props<P extends VerifiedParts> {
+interface IVerifiedPartLinksTableProps<P extends VerifiedParts> {
   part: keyof P
   allParts: P
 }
 
-const getWebsiteTitle = (url: string) => {
-  if (url.includes('aliexpress')) {
-    return 'AliExpress'
-  }
-
-  if (url.includes('amazon')) {
-    return 'Amazon'
-  }
-
-  return 'Other'
-}
-
-const VerifiedPartLinksTable = <P extends VerifiedParts = typeof verifiedParts>(props: Props<P>) => {
+const VerifiedPartLinksTable = <P extends VerifiedParts = typeof verifiedParts>(props: IVerifiedPartLinksTableProps<P>) => {
   const {
     part,
     allParts = verifiedParts
@@ -40,18 +28,10 @@ const VerifiedPartLinksTable = <P extends VerifiedParts = typeof verifiedParts>(
       </thead>
       <tbody>
         { Object.entries(currentPartLinks).map(([region, links]) => (
-          <tr>
+          <tr key={region}>
             <td className='tw-text-left'>{region}</td>
             <td className='tw-text-left tw-align-text-top'>
-              <ul>
-                {
-                  links.map(link => (
-                    <li>
-                      <Link to={link} target={'_blank'}>{getWebsiteTitle(link)}</Link>
-                    </li>
-                  ))
-                }
-              </ul>
+              <LinkList links={links} />
             </td>
           </tr>
         )) }

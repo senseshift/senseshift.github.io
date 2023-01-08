@@ -12,6 +12,7 @@ DevKitC
 DIY
 DK
 Docusaurus
+DonSalami
 DualShock
 ERM
 ERMs
@@ -34,6 +35,7 @@ MCUs
 Microdrives
 Nano
 NodeMCU
+Oculus
 OpenHaptics
 openhaptics
 overvoltage
@@ -47,6 +49,7 @@ sexualized
 SIG
 socio
 src
+Tactal
 Taptic
 trackpads
 ULN
