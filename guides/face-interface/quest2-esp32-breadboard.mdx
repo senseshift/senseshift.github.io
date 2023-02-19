@@ -92,41 +92,39 @@ Insert your ULN2803 Darlington transistor arrays into the left-most part of your
 
 | Wiring Diagram | Photo |
 | :------------: | :---: |
-| ![ULN2803 on Breadboard](./assets/quest2-esp32-breadboard/schematic-step-2.png) |  |
+| ![ULN2803 on Breadboard](./assets/quest2-esp32-breadboard/schematic-step-2.png) | ![ULN2803 on Breadboard IRL](https://i.imgur.com/6ouCKcL.jpg) |
 
-### Step 3: Wire vibration motors
-
-For this step you'll need to make cuts in your Face Interface replacement. Make evenly-spaced cuts with knife to fit vibration motors in face pad (you can find image with motor locations below).
-Alternatively, you can attach motors with tape, if you do not feel like damaging your face interface.
-
-Solder your Vibration Motor wires as per diagram below. Your _red_ wires have to be connected into one line, and each _blue_ wire connected to ULN2803 separately.
-
-| Motor Placement                                                        | Photo |
-| :--------------------------------------------------------------------: | :---: |
-| ![Vibration motors placement](/img/face-interface-motor-placement.png) | ![Photo by DonSalami](https://media.discordapp.net/attachments/1024776203095257181/1039106722104627240/IMG_20221106_215155.jpg?width=895&height=671) An example by [DonSalami in our Discord server](https://discord.com/channels/966090258104062023/1024776203095257181/1039106722352074782) |
-
-
-| Wiring Diagram                                                                   | Photo |
-| :------------------------------------------------------------------------------: | :---: |
-| ![Wired vibration motors](./assets/quest2-esp32-breadboard/schematic-step-3.png) |  |
-
-### Step 4: Connect ESP32 power pins
+### Step 3: Connect ESP32
 
 Insert your ESP32 into the right-most part of your breadboard. Make sure, that you have a single row of non-obstructed below your ESP32 to connect wires later. Connect `5V` pin with _red_ line and `GND` pin with _blue_ line with jumper wires.
 
-| Wiring Diagram                                                              | Photo |
-| :-------------------------------------------------------------------------: | :---: |
-| ![Wired ESP32 power](./assets/quest2-esp32-breadboard/schematic-step-4.png) |  |
-
-### Step 5: Connect ESP32 data PWM pins
+| Wiring Diagram | Photo |
+| :------------: | :---: |
+| ![ESP32 on Breadboard](./assets/quest2-esp32-breadboard/schematic-step-3-1.png) | ![ESP32 on Breadboard IRL](https://i.imgur.com/NtM7IXg.jpg) |
 
 Connect pins `IO14`, `IO27`, `IO26`, `IO25`, `IO33`, `IO32` with your ULN2803 with jumper wires array as per diagram below.
 
-| Wiring Diagram                                                                | Photo |
-| :---------------------------------------------------------------------------: | :---: |
-| ![Wired ESP32 PWM](./assets/quest2-esp32-breadboard/schematic-step-final.png) |  |
+| Wiring Diagram | Photo |
+| :------------: | :---: |
+| ![ESP32 on Breadboard](./assets/quest2-esp32-breadboard/schematic-step-3-2.png) | ![ESP32 on Breadboard IRL](https://i.imgur.com/GDmuFiE.jpg) |
 
-### Step 6: Flash firmware
+### Step 4: Wire vibration motors
+
+Solder jumper wires to your vibration motors, than connect them as per diagram below.
+
+| Wiring Diagram | Photo |
+| :------------: | :---: |
+| ![Motor connection](./assets/quest2-esp32-breadboard/schematic-step-final.png) | ![Vibration motors soldered](https://i.imgur.com/qigeFM0.jpg) |
+
+You'll need to make cuts in your Face Interface replacement. Make evenly-spaced cuts with knife to fit vibration motors in face pad (you can find image with motor locations below).
+Alternatively, you can attach motors with tape, if you do not feel like damaging your face interface.
+
+| Motor Placement                                                        | Photo |
+| :--------------------------------------------------------------------: | :---: |
+| ![Vibration motors placement](/img/face-interface-motor-placement.png) | ![Vibration motor on face interface](https://i.imgur.com/a5Uirb0.jpg) |
+
+
+### Step 5: Flash firmware
 
 Use any of our [Firmware Flashing methods](/docs/category/flashing-firmware) and flash Face Interface (Tactal) firmware.
 
