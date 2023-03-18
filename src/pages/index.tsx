@@ -14,11 +14,18 @@ function HomepageHeader() {
       <div className="container">
         <h1 className="hero__title">{siteConfig.title}</h1>
         <p className="hero__subtitle">{siteConfig.tagline}</p>
-        <div className={styles.buttons}>
+        <div className="tw-flex tw-flex-row tw-gap-4">
           <Link
             className="button button--secondary button--lg"
-            to="/docs/about">
-            About OpenHaptics
+            to="/docs/getting-started"
+          >
+            Get Started
+          </Link>
+          <Link
+            className="button button--outline button--lg"
+            to="https://github.com/openhaptics"
+          >
+            View on GitHub
           </Link>
         </div>
       </div>
@@ -30,8 +37,8 @@ export default function Home(): JSX.Element {
   const {siteConfig} = useDocusaurusContext();
   return (
     <Layout
-      title={`Hello from ${siteConfig.title}`}
-      description="Description will go into a meta tag in <head />">
+      title={`${siteConfig.title} Docs`}
+      description="Official documentation for OpenHaptics - open-source and affordable VR haptics-accessories solution.">
       <HomepageHeader />
       <main>
         <HomepageFeatures />

@@ -57,6 +57,11 @@ const config = {
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
+      announcementBar: {
+        id: 'patreon',
+        content: 'If you would like to support the development of OpenHaptics, please consider subscribing to <a href="https://www.patreon.com/openhaptics" target="_blank" rel="noopener noreferrer">our Patreon</a>.',
+        backgroundColor: '#FF424D',
+      },
       navbar: {
         title: 'OpenHaptics',
         logo: {
