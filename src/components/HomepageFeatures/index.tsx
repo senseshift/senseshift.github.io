@@ -41,7 +41,7 @@ const FeatureList: Omit<FeatureItem, 'iconBox'>[] = [
     title: 'Wide support',
     description: 'Over of 100 of supported games',
     icon: '🎮',
-  }
+  },
 ];
 
 const Feature: FC<FeatureItem> = ({title, description, icon, iconBox = false}) => {
