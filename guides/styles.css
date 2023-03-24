@@ -1,0 +1,8 @@
+.plugin-id-guides .markdown table:not(.verified-parts__table) {
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+}
+.plugin-id-guides .markdown table:not(.verified-parts__table) thead tr th {
+    width: 50%;
+}

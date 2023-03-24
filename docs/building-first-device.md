@@ -34,7 +34,7 @@ Make sure you connected everything correctly. **Components can be physically dam
 
 ### Step 4: Flash firmware and test your assembly
 
-Flash firmware to your board, with any of methods, listed on [this page](/docs/category/flashing-firmware). Connect your board to power source and make sure it [successfully connects](/docs/category/connecting-to-device) to your host.
+Flash firmware to your board, with any of methods, listed on [this page](/docs/category/firmware). Connect your board to power source and make sure it [successfully connects](/docs/category/connecting-to-device) to your host.
 
 ### Step 5: Mount wearable components
 

@@ -6,7 +6,9 @@ title: 'Guide: Building DIY Haptic Face Interface for Meta Quest 2'
 import VerifiedParts from '@site/src/components/VerifiedParts'
 import verifiedParts from '@site/src/verified-parts'
 
-# Building Haptic Face Interface for Quest 2
+import '../styles.css'
+
+# Building Haptic Face Interface for VR Headstes
 
 Haptic Face Interface is the easiest OpenHaptics device you can build, and we recommend starting your journey with OpenHaptics with it! With 6 Haptic Feedback Points, you will deeply improve your immersion by feeling every touch and punch into your face.
 
@@ -20,7 +22,7 @@ If you need help or guidance along the way, be sure to consult with our communit
 
 ## Prerequisites
 
-1. Oculus Quest 2
+1. 3rd-party facial interface
 2. Soldering skills or will to learn
 
 ## Build Guide
@@ -72,19 +74,9 @@ A small variety of hardware components is required to build your DIY Haptic Face
   }
 />
 
-<!-- I know it's a dirty trick -->
-<style>
-  {`
-    table:not(.verified-parts__table) {
-      display: table;
-      width: 100%;
-      table-layout: fixed;
-    }
-    table:not(.verified-parts__table) thead tr th {
-      width: 50%;
-    }
-  `}
-</style>
+:::note
+You may need to adjust list according to your setup, e.g. changing face interface to a different model.
+:::
 
 ### Step 2: Connect ULN2803
 
@@ -92,7 +84,7 @@ Insert your ULN2803 Darlington transistor arrays into the left-most part of your
 
 | Wiring Diagram | Photo |
 | :------------: | :---: |
-| ![ULN2803 on Breadboard](./assets/quest2-esp32-breadboard/schematic-step-2.png) | ![ULN2803 on Breadboard IRL](https://i.imgur.com/6ouCKcL.jpg) |
+| ![ULN2803 on Breadboard](./assets/esp32-breadboard/schematic-step-2.png) | ![ULN2803 on Breadboard IRL](https://i.imgur.com/6ouCKcL.jpg) |
 
 ### Step 3: Connect ESP32
 
@@ -100,13 +92,13 @@ Insert your ESP32 into the right-most part of your breadboard. Make sure, that y
 
 | Wiring Diagram | Photo |
 | :------------: | :---: |
-| ![ESP32 on Breadboard](./assets/quest2-esp32-breadboard/schematic-step-3-1.png) | ![ESP32 on Breadboard IRL](https://i.imgur.com/NtM7IXg.jpg) |
+| ![ESP32 on Breadboard](./assets/esp32-breadboard/schematic-step-3-1.png) | ![ESP32 on Breadboard IRL](https://i.imgur.com/NtM7IXg.jpg) |
 
 Connect pins `IO14`, `IO27`, `IO26`, `IO25`, `IO33`, `IO32` with your ULN2803 with jumper wires array as per diagram below.
 
 | Wiring Diagram | Photo |
 | :------------: | :---: |
-| ![ESP32 on Breadboard](./assets/quest2-esp32-breadboard/schematic-step-3-2.png) | ![ESP32 on Breadboard IRL](https://i.imgur.com/GDmuFiE.jpg) |
+| ![ESP32 on Breadboard](./assets/esp32-breadboard/schematic-step-3-2.png) | ![ESP32 on Breadboard IRL](https://i.imgur.com/GDmuFiE.jpg) |
 
 ### Step 4: Wire vibration motors
 
@@ -114,7 +106,7 @@ Solder jumper wires to your vibration motors, than connect them as per diagram b
 
 | Wiring Diagram | Photo |
 | :------------: | :---: |
-| ![Motor connection](./assets/quest2-esp32-breadboard/schematic-step-final.png) | ![Vibration motors soldered](https://i.imgur.com/qigeFM0.jpg) |
+| ![Motor connection](./assets/esp32-breadboard/schematic-step-final.png) | ![Vibration motors soldered](https://i.imgur.com/qigeFM0.jpg) |
 
 You'll need to make cuts in your Face Interface replacement. Make evenly-spaced cuts with knife to fit vibration motors in face pad (you can find image with motor locations below).
 Alternatively, you can attach motors with tape, if you do not feel like damaging your face interface.
@@ -126,14 +118,14 @@ Alternatively, you can attach motors with tape, if you do not feel like damaging
 
 ### Step 5: Flash firmware
 
-Use any of our [Firmware Flashing methods](/docs/category/flashing-firmware) and flash Face Interface (Tactal) firmware.
+Use any of our [Firmware Flashing methods](/docs/category/firmware) and flash Face Interface (Tactal) firmware.
 
 ## Final Result
 
 ### Final Wiring Diagram
 
 <img
-  src={require('./assets/quest2-esp32-breadboard/schematic-step-final.png').default}
+  src={require('./assets/esp32-breadboard/schematic-step-final.png').default}
   alt="Final Wiring Diagram"
   width="512"
 />

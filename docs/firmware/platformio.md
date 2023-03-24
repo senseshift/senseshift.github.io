@@ -88,9 +88,33 @@ Flash it using either **quick actions**, or by running `Flash` command from **Pr
 
 </details>
 
-## Customizing and editing firmware
+## Customizing and editing firmware {#customizing}
 
-If your setup requires additional changes, select best suiting target, and edit it's source code. All firmware files are configured in `platformio.ini` and `ini/bhaptics.ini` files. Read more about configuration [here](https://docs.platformio.org/en/latest/projectconf/index.html)
+If your setup requires additional changes, select best suiting target, and edit it's source code. All firmware files are configured in `platformio.ini` and `ini/bhaptics.ini` files. Read more about configuration [here](https://docs.platformio.org/en/latest/projectconf/index.html).
+
+### Changing pins
+
+Your device source files are located in [`firmware/mode_configs/bhaptics` directory](https://github.com/openhaptics/openhaptics-firmware/tree/master/firmware/mode_configs/bhaptics). In the files there you can find following lines of code:
+
+```cpp
+...
+auto frontOutputs = mapMatrixCoordinates<AbstractOutputWriter>({
+   {new PWMOutputWriter(32), new PWMOutputWriter(33), new PWMOutputWriter(25), new PWMOutputWriter(26)},
+   {new PWMOutputWriter(27), new PWMOutputWriter(14), new PWMOutputWriter(12), new PWMOutputWriter(13)},
+});
+auto backOutputs = mapMatrixCoordinates<AbstractOutputWriter>({
+   {new PWMOutputWriter(19), new PWMOutputWriter(18), new PWMOutputWriter(5), new PWMOutputWriter(17)},
+   {new PWMOutputWriter(16), new PWMOutputWriter(4), new PWMOutputWriter(2), new PWMOutputWriter(15)},
+});
+...
+
+```
+
+The numbers are your output pins, and their location in the configuration matrix corresponds to the physical location of the motors on your device.
+
+---
+
+> Parts of this document are an adaptation from SlimeVR. Some Credit goes to the SlimeVR team [adapted from here](https://docs.slimevr.dev/firmware/setup-and-install.html)
 
 [vscode]: https://code.visualstudio.com/download
 [pio]: https://platformio.org/platformio-ide

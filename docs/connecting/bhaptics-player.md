@@ -8,10 +8,20 @@ OpenHaptics devices support connecting to **bHaptics Player** on all platforms, 
 
 | Platform   | Versions              |
 | :--------- | :-------------------- |
-| PC         | `1.7.3.1`, `1.8.2.1`, `1.8.2.2`  |
+| PC         | `1.7.3.1` &mdash; `1.8.2.4`  |
 | Android    | `TBA`                 |
-| iOS        | `TBA`                 |
+| iOS        | `2023.1.2`+           |
 | Meta Quest | `TBA`                 |
+
+## Platform-specific steps
+
+### Windows {#platform-windows}
+
+Note, that you **don't need** to pair your device in the Bluetooth Settings, bHaptics Player will connect itself.
+
+### Meta Quest {#platform-quest}
+
+Pair your device by following this guide from [Meta](https://www.meta.com/help/quest/articles/headsets-and-accessories/using-your-headset/connect-compatible-bluetooth-device/)
 
 ## Licensing
 

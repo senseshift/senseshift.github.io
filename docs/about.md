@@ -4,8 +4,12 @@ sidebar_position: 1
 
 # About OpenHaptics
 
-OpenHaptics is an open-source firmware for haptic-feedback devices that are used in Virtual Reality environments.
-. OpenHaptics is designed to be easy to use and integrate with existing VR systems, making it a valuable tool for anyone working in the field of VR. The source code for OpenHaptics is available for free on GitHub, allowing anyone to contribute to its development and improvement.
+OpenHaptics is an open-source firmware for accessories and devices that are used in Virtual Reality environments.
+OpenHaptics is designed to be easy to use and integrate with existing VR systems, making it a valuable tool for anyone working in the field of VR. The source code for OpenHaptics is available for free on GitHub, allowing anyone to contribute to its development and improvement.
+
+## History of OpenHaptics
+
+OpenHaptics project initially started in summer 2021 as open-source alternative for retail haptic-feedback vests.
 
 ## License
 

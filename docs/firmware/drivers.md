@@ -24,3 +24,7 @@ Driver for **macOS** is available [here](https://www.wch.cn/downloads/CH341SER_M
 
 Download archive file for **Windows** from [here](https://www.wch.cn/downloads/CH343SER_ZIP.html), extract files from zip archive, then launch `SETUP.EXE` mad follow installation instructions.  
 Driver for **macOS** is available [here](https://www.wch.cn/downloads/CH34XSER_MAC_ZIP.html)
+
+---
+
+> Parts of this document are an adaptation from SlimeVR. Some Credit goes to the SlimeVR team [adapted from here](https://docs.slimevr.dev/firmware/setup-and-install.html)

@@ -1,6 +1,7 @@
 Adafruit
 AliExpress
 ArduinoBLE
+Asus
 AVR
 bHaptics
 BLE
@@ -27,6 +28,7 @@ Jopson
 KPD
 LRA
 LRAs
+LucidGloves
 mA
 MacBooks
 macOS
@@ -37,6 +39,7 @@ Microdrives
 Nano
 NodeMCU
 Oculus
+OpenGloves
 OpenHaptics
 openhaptics
 overvoltage
@@ -48,6 +51,7 @@ PWM
 Roadmap
 sexualized
 SIG
+SlimeVR
 socio
 src
 Tactal
@@ -61,3 +65,4 @@ WIP
 WROOM
 WROVER
 Xbox
+XR

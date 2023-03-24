@@ -4,7 +4,8 @@
 
 - [ ] Build Guides
 - [ ] DK (breakout) boards
-- [ ] *OpenHaptics Connect* application (bHaptics Player replacement) ([GitHub Repository](https://github.com/openhaptics/unihaptics-connect))
+- [ ] *OpenHaptics Connect* application (bHaptics Player replacement) ([GitHub Repository](https://github.com/openhaptics/xrconnect-monorepo))
+- [ ] OpenGloves / LucidGloves integration ([GitHub Issue](https://github.com/openhaptics/openhaptics-firmware/issues/44))
 
 # Planned
 
