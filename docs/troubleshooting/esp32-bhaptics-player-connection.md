@@ -38,8 +38,8 @@ If you were not able to connect to the bHaptics Player using another platform, t
 3. Disable interference:
    * Move your ESP32 board and computer closer together to minimize interference.
 4. Consider purchasing another Bluetooth dongle, here are some adapters that have been reported to work well:
-   * TP-Link UB500
-   * Asus BT400
+   * `TP‑Link UB500`
+   * `Asus BT400`
 
 If you have tried all of the above steps and are still experiencing connection issues, search for help on our Discord server or submit a new issue on our GitHub page. Our community of users and developers may be able to provide additional guidance and support.
 
