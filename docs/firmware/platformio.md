@@ -5,7 +5,7 @@ sidebar_label: 'Option 1: PlatformIO IDE'
 
 # PlatformIO IDE
 
-Flash OpenHaptics firmware using VSCode and PlatformIO IDE
+Flash SenseShift firmware using VSCode and PlatformIO IDE
 
 ## Prerequisites
 
@@ -54,7 +54,7 @@ If you've [installed optional Git client](#install-git-client), you can clone th
 
 Make sure you close any current projects you have open or open a new window before moving forward with these steps:
 
-1. Click the Source Control button, click on Clone Repository and enter: `https://github.com/openhaptics/openhaptics-firmware.git`.  
+1. Click the Source Control button, click on Clone Repository and enter: `https://github.com/senseshift/senseshift-firmware.git`.  
    If you installed git while Visual Studio Code was open you may have to close it and re-open it first.
    ![Clone project](https://i.imgur.com/DW0CV5d.gif)
 2. Once you have chosen a download location click the **Open button** that appears at the bottom right.  
@@ -66,7 +66,7 @@ Make sure you close any current projects you have open or open a new window befo
 
 If you've decided not to download Git client, you can download latest firmware as ZIP and open it with following steps
 
-1. Download [latest firmware archive](https://github.com/openhaptics/openhaptics-firmware/archive/refs/heads/master.zip) and unzip it in any folder.
+1. Download [latest firmware archive](https://github.com/senseshift/senseshift-firmware/archive/refs/heads/master.zip) and unzip it in any folder.
 2. Click **Open Folder** button in File section and select directory with unzipped firmware.  
    ![Open Folder](https://i.imgur.com/Lr8P8WL.gif)
 3. Click **Yes, I trust the authors**.  
@@ -84,7 +84,7 @@ Flash it using either **quick actions**, or by running `Flash` command from **Pr
 
   1. PlatformIO IDE homepage
   2. Select desired firmware mode and run command (Build, Upload or Monitor) in **Project Tasks**
-  3. Use **quick actions** (`✔️ - Build`, `➡️ - Upload`, `🔌 - Monitor`). Choose your default mode by clicking `Default (openhaptics-firmware)` and switching your default
+  3. Use **quick actions** (`✔️ - Build`, `➡️ - Upload`, `🔌 - Monitor`). Choose your default mode by clicking `Default (senseshift-firmware)` and switching your default
 
 </details>
 
@@ -94,7 +94,7 @@ If your setup requires additional changes, select best suiting target, and edit 
 
 ### Changing pins
 
-Your device source files are located in [`firmware/mode_configs/bhaptics` directory](https://github.com/openhaptics/openhaptics-firmware/tree/master/firmware/mode_configs/bhaptics). In the files there you can find following lines of code:
+Your device source files are located in [`firmware/mode_configs/bhaptics` directory](https://github.com/senseshift/senseshift-firmware/tree/master/firmware/mode_configs/bhaptics). In the files there you can find following lines of code:
 
 ```cpp
 ...

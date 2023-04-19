@@ -18,7 +18,7 @@ const FeatureList: Omit<FeatureItem, 'iconBox'>[] = [
     title: 'Open Source',
     description: (
       <>
-        OpenHaptics firmware is fully open-source and <Link to='https://github.com/openhaptics'>available on GitHub</Link>.
+        SenseShift firmware is fully open-source and <Link to='https://github.com/senseshift'>available on GitHub</Link>.
       </>
     ),
     icon: (

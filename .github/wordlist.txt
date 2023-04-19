@@ -51,6 +51,8 @@ PlatformIO
 ProTubeVR
 PWM
 Roadmap
+SenseShift
+senseshift
 sexualized
 SIG
 SlimeVR

@@ -12,9 +12,9 @@ If you need help or guidance along the way, be sure to consult with our communit
 
 ### Step 1: Select first device to build
 
-Select one of the schematics, listed in the [GitHub Repository](https://github.com/openhaptics/openhaptics-hardware#schematics).
+Select one of the schematics, listed in the [GitHub Repository](https://github.com/senseshift/senseshift-hardware#schematics).
 
-We suggest selecting [**x6 Haptic Facial Interface**](https://github.com/openhaptics/openhaptics-hardware/tree/main/Devices/Face%20Interface/ESP32%20+%20Integrated%20PWM), since it is the easiest one to build, requiring much less components, than others and much easier to assemble.
+We suggest selecting [**x6 Haptic Facial Interface**](https://github.com/senseshift/senseshift-hardware/tree/main/Devices/Face%20Interface/ESP32%20+%20Integrated%20PWM), since it is the easiest one to build, requiring much less components, than others and much easier to assemble.
 
 On the page with your desired schematic, you will find all required information about hardware assembly.
 Note, that some of our schematics provide optional features for advanced makers. You can simply skip optional step, if you want to.

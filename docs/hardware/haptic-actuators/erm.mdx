@@ -10,7 +10,7 @@ ERM stands for **eccentric rotating mass** and relies on small unbalanced mass a
 ## ERM types
 
 :::note
-All categories were made up in the context of applying them in OpenHaptics
+All categories were made up in the context of applying them in SenseShift
 :::
 
 ### Coin ERMs
@@ -82,7 +82,7 @@ There is no strict rules, how to apply different actuators, just a recommendatio
 
 Most ERM actuators, even the smallest Coin ERMs, draw much more, than safe 20mA, that can be provided by ESP32, so **using a transistor is required** to wire an ERM actuator.
 
-In most cases, when building DIY OpenHaptics devices, using **ULN2803A** Darlington transistor array is the best way since it can power 8 devices at the same time, which pairs nicely with **PCA9685** 16-channel PWM driver.
+In most cases, when building DIY SenseShift devices, using **ULN2803A** Darlington transistor array is the best way since it can power 8 devices at the same time, which pairs nicely with **PCA9685** 16-channel PWM driver.
 
 Since ERMs rely on PWM signal, following **PWM drivers** can be used:
 

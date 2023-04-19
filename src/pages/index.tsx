@@ -23,7 +23,7 @@ function HomepageHeader() {
           </Link>
           <Link
             className="button button--outline button--lg"
-            to="https://github.com/openhaptics"
+            to="https://github.com/senseshift"
           >
             View on GitHub
           </Link>
@@ -38,7 +38,7 @@ export default function Home(): JSX.Element {
   return (
     <Layout
       title={`${siteConfig.title} Docs`}
-      description="Official documentation for OpenHaptics - open-source and affordable VR haptics-accessories solution.">
+      description="Official documentation for SenseShift - open-source and affordable VR haptics-accessories solution.">
       <HomepageHeader />
       <main>
         <HomepageFeatures />
