@@ -17,12 +17,12 @@ This guide will help you troubleshoot issues of your ESP32 not connecting to bHa
 
 ## Hardware issues {#hardware-issues}
 
-> [GitHub Issue](https://github.com/openhaptics/openhaptics-firmware/issues/32)
+> [GitHub Issue](https://github.com/senseshift/senseshift-firmware/issues/32)
 
 If you've been able to connect to the bHaptics Player using another MCU (ESP32), it is most likely a hardware issue. Here is an explanation on why it can happen:
 
 Some sellers on AliExpress and Amazon may sell faulty ESP32 boards, which can cause connection issues.
-By purchasing from a verified vendor, you can be sure that you are getting a high-quality board that will work properly with OpenHaptics.
+By purchasing from a verified vendor, you can be sure that you are getting a high-quality board that will work properly with SenseShift.
 
 Consider purchasing components from list of verified vendors: [verified sources for ESP32](/docs/hardware/mcu#esp32-recommended-sources)
 

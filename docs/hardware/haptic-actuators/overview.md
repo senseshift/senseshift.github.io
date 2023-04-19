@@ -2,7 +2,7 @@
 
 There are 2 main types of haptic actuators: **eccentric rotating mass (ERM)** and **linear resonant actuators (LRA)**
 
-Both types can be used with OpenHaptics, though, ERMs are much easier, since **LRAs require additional drivers ICs**
+Both types can be used with SenseShift, though, ERMs are much easier, since **LRAs require additional drivers ICs**
 
 ## Difference between ERMs and LRAs
 

@@ -5,7 +5,7 @@ slug: /hardware
 
 # Hardware Overview
 
-OpenHaptics firmware supports a wide variety of different hardware: MCUs, haptic actuators, etc.
+SenseShift firmware supports a wide variety of different hardware: MCUs, haptic actuators, etc.
 
 ## Hardware Reference Table
 

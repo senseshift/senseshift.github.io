@@ -18,8 +18,8 @@ interface StepFirmwareConfigureProps {
 const StepFirmwareConfigure: FC<StepFirmwareConfigureProps> = ({ onSubmit }) => {
   const octokit = useRef(new Octokit())
   const { isInitialLoading, data: releasesData } = useQuery({
-    queryKey: ['openhaptics-firmware', 'releases'],
-    queryFn: async () => (await octokit.current.request('GET /repos/{owner}/{repo}/releases', { owner: 'openhaptics', repo: 'openhaptics-firmware' })).data,
+    queryKey: ['senseshift-firmware', 'releases'],
+    queryFn: async () => (await octokit.current.request('GET /repos/{owner}/{repo}/releases', { owner: 'senseshift', repo: 'senseshift-firmware' })).data,
     refetchOnWindowFocus: false,
   })
 
