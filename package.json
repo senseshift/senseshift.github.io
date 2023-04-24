@@ -22,7 +22,7 @@
     "@octokit/core": "^4.2.0",
     "@octokit/request": "^6.2.3",
     "@tailwindcss/forms": "^0.5.3",
-    "@tanstack/react-query": "^4.29.3",
+    "@tanstack/react-query": "^4.29.5",
     "@zip.js/zip.js": "^2.7.6",
     "autoprefixer": "^10.4.14",
     "clsx": "^1.2.1",
