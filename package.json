@@ -17,7 +17,7 @@
   },
   "dependencies": {
     "@docusaurus/core": "^2.4.0",
-    "@docusaurus/preset-classic": "^2.4.0",
+    "@docusaurus/preset-classic": "^2.4.1",
     "@mdx-js/react": "^1.6.22",
     "@octokit/core": "^4.2.0",
     "@octokit/request": "^6.2.3",
