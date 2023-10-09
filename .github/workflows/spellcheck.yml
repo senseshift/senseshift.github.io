@@ -8,5 +8,5 @@ jobs:
     name: Check Spelling
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - uses: rojopolis/spellcheck-github-actions@0.33.1
