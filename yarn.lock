@@ -3782,10 +3782,10 @@ esprima@^4.0.0:
   resolved "https://registry.yarnpkg.com/esprima/-/esprima-4.0.1.tgz#13b04cdb3e6c5d19df91ab6987a8695619b0aa71"
   integrity sha512-eGuFFw7Upda+g4p+QHvnW0RyTX/SVeJBDM/gCtMARO0cLuT2HcEKnTPvhjV6aGeqrCB/sbNop0Kszm0jsaWU4A==
 
-esptool.ts@^0.13.7:
-  version "0.13.7"
-  resolved "https://registry.yarnpkg.com/esptool.ts/-/esptool.ts-0.13.7.tgz#9535ab65697a09b339280179e10f5ebc8862dc85"
-  integrity sha512-b8pLUuOE3OZvz+DUmY3ozbt1IdjjgPUFql4D6bXw5dDRlCn5zkb1CatLQRv+y7pLg4w6r0pAxLBUVGQfX+zPZw==
+esptool.ts@^0.14.0:
+  version "0.14.0"
+  resolved "https://registry.yarnpkg.com/esptool.ts/-/esptool.ts-0.14.0.tgz#769e95308e0b327f818aa90e8609d0a908ef6569"
+  integrity sha512-yRZ2rRLpwNBKfztwIVclctjblIqX9rwbRwF1U/hDOnRaVWvT3IIFaK5fiYKR8UF4fU4GUNo29taNqxxIwP2U0g==
 
 esrecurse@^4.3.0:
   version "4.3.0"
