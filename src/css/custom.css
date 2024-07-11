@@ -119,3 +119,5 @@ figure > img+figcaption {
   font-size: 10px;
   margin: 1em 0;
 }
+
+html[data-theme='dark'] .navbar .navbar__logo { content: url(/img/logo-dark.svg) }
