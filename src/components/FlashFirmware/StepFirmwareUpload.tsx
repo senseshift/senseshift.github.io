@@ -75,9 +75,7 @@ const StepFirmwareUpload: FC<StepFirmwareUploadProps> = ({ manifest, onError }) 
     [ requestPort ]
   )
 
-  useEffect(() => {
-    connect()
-  }, []) // Connect on mount
+  useEffect(() => { connect() }, []) // Connect on mount
 
   useEffect(() => () => {
     espLoader && espLoader.disconnect().finally(() => { port && port.close() })

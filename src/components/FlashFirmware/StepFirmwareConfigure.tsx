@@ -28,14 +28,14 @@ const StepFirmwareConfigure: FC<StepFirmwareConfigureProps> = ({ onSubmit }) => 
     [ releasesData ]
   )
   const [ selectedTag, selectTag ] = useState<string>()
-  useEffect(() => releases && selectTag(releases[0].tag_name), [ releases ]) // Select tag on initial load
+  useEffect(() => { releases && selectTag(releases[0].tag_name) }, [ releases ]) // Select tag on initial load
 
   const assets = useMemo<Asset[]>(
     () => releases && selectedTag && releases.find((release) => release.tag_name === selectedTag)?.assets,
     [ releases, selectedTag ]
   )
   const [ selectedAsset, selectAsset ] = useState<string>()
-  useEffect(() => Array.isArray(assets) && assets.length && selectAsset(assets[0].node_id), [ assets ]) // Select binary on tag changed
+  useEffect(() => { Array.isArray(assets) && assets.length && selectAsset(assets[0].node_id) }, [ assets ]) // Select binary on tag changed
 
   const downloadUrl = useMemo<string>(() => releases?.find(r => r.tag_name === selectedTag)?.assets?.find(r => r.node_id === selectedAsset)?.browser_download_url, [ releases, selectedTag, selectedAsset ])
 
