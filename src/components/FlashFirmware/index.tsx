@@ -78,7 +78,7 @@ const FlashFirmware: FC = () => {
   const [ error, setError ] = useState<unknown>();
 
   const { isSupported: isWebSerialSupported, error: serialError, port } = useWebSerial()
-  useEffect(() => setError(serialError), [ serialError ])
+  useEffect(() => { setError(serialError) }, [ serialError ])
 
   const [ state, dispatch ] = useReducer(flashFirmwareReducer, { currentStep: Step.Configure })
 

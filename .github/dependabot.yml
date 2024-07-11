@@ -42,7 +42,6 @@ updates:
         patterns:
         - docusaurus
         - "@docusaurus*"
-        - "@tsconfig/docusaurus"
         update-types:
         - "minor"
         - "patch"
@@ -52,6 +51,7 @@ updates:
         - react
         - react-dom
         - "@react*"
+        - "@types/react*"
         update-types:
         - "minor"
         - "patch"

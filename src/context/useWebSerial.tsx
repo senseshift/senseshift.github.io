@@ -27,7 +27,7 @@ export const WebSerialProvider: FC<PropsWithChildren<WebSerialProviderProps>> = 
 
   const isBrowser = useIsBrowser()
   const [isSupported, setSupported] = useState<boolean>(false)
-  useEffect(() => isBrowser && setSupported(navigator.serial !== undefined), [isBrowser, setSupported])
+  useEffect(() => { isBrowser && setSupported(navigator.serial !== undefined) }, [isBrowser, setSupported])
 
   const [ port, setPort ] = useState<SerialPort>()
   useEffect(
