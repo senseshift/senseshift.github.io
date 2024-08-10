@@ -90,11 +90,15 @@ const StepFirmwareUpload: FC<StepFirmwareUploadProps> = ({ manifest, onError }) 
 
       setBaudRate(921600)
 
-      for (const partition of manifest.parts) {
-        console.log(`Writing partition ${partition.offset}: ${partition.path}`);
+      const totalSize = manifest.parts.reduce((acc, part) => acc + part.binary.size, 0)
+      for (const [i, partition] of manifest.parts.entries()) {
+        const prevSize = manifest.parts.slice(0, i).reduce((acc, part) => acc + part.binary.size, 0)
+        const currentSize = partition.binary.size
+
         const data = new Uint8Array(await partition.binary.arrayBuffer())
         await espLoader.flashData(data, partition.offset, (idx, cnt) => {
-          setProgress(idx/cnt)
+          const currentProgress = currentSize * (idx / cnt)
+          setProgress((prevSize + currentProgress) / totalSize)
         });
         await sleep(100);
       }
