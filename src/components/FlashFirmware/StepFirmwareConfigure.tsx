@@ -7,6 +7,7 @@ import { compareVersions } from 'compare-versions'
 
 import Button from '@site/src/components/Button'
 import Select from '@site/src/components/Select'
+import clsx from 'clsx'
 
 type Release = Components["schemas"]["release"]
 type Asset = Components["schemas"]["release-asset"]
@@ -52,13 +53,22 @@ const StepFirmwareConfigure: FC<StepFirmwareConfigureProps> = ({ onSubmit }) => 
         Select version:
         <Select
           id="version"
-          className='tw-block tw-w-full tw-mt-1 tw-form-input'
+          className={
+            clsx(
+              'tw-block tw-w-full tw-mt-1 tw-form-input',
+              isInitialLoading && 'tw-animate-pulse tw-bg-gray-100 tw-cursor-not-allowed tw-pointer-events-none'
+            )
+          }
           value={selectedTag}
           onChange={(e) => { selectTag(e.target.value) }}
         >
-          { releases && releases.map((release) => (
-              <option key={`release-${release.id}`} value={release.tag_name}>{release.tag_name}</option>
-            )) }
+          {
+            !isInitialLoading
+              ? releases.map((release) => (
+                  <option key={`release-${release.id}`} value={release.tag_name}>{release.tag_name}</option>
+                )) 
+              : <option>Loading...</option>
+          }
         </Select>
       </label>
 
@@ -68,7 +78,12 @@ const StepFirmwareConfigure: FC<StepFirmwareConfigureProps> = ({ onSubmit }) => 
         Select firmware:
         <Select
           id="binary"
-          className='tw-block tw-w-full tw-mt-1 tw-form-input'
+          className={
+            clsx(
+              'tw-block tw-w-full tw-mt-1 tw-form-input',
+              isInitialLoading && 'tw-animate-pulse tw-bg-gray-100 tw-cursor-not-allowed tw-pointer-events-none'
+            )
+          }
           value={selectedAsset}
           onChange={(e) => { selectAsset(e.target.value) }}
         >
@@ -81,10 +96,15 @@ const StepFirmwareConfigure: FC<StepFirmwareConfigureProps> = ({ onSubmit }) => 
       </label>
 
       <Button
-        className='tw-block tw-w-full tw-mt-3'
+        className={
+          clsx(
+            'tw-block tw-w-full tw-mt-3',
+            isInitialLoading && 'tw-animate-pulse tw-bg-gray-100 tw-cursor-not-allowed tw-pointer-events-none'
+          )
+        }
         onClick={handleSubmit}
       >
-        Continue
+        { isInitialLoading ? 'Loading...' : 'Continue' }
       </Button>
     </div>
   )
