@@ -114,7 +114,14 @@ const StepFirmwareUpload: FC<StepFirmwareUploadProps> = ({ manifest, onError }) 
         { status === Status.Connecting && <Button disabled >Connecting...</Button> }
         { status === Status.Connected && <Button onClick={flashFirmware}>Flash firmware!</Button> }
         { status === Status.Flashing && `Flashing: ${(progress * 100).toFixed(2)}%` }
-        { status === Status.Success && 'Done!' }
+        { status === Status.Success && <>
+          <Admonition type='success'>
+            Firmware flashed successfully!
+            <br />
+            Do you like this project? 
+            Feel free to support it on <a href="https://www.patreon.com/senseshift" target="_blank" rel="noopener noreferrer">Patreon</a>, <a href="https://buymeacoffee.com/leon0399" target="_blank" rel="noopener noreferrer">Buy me a coffee</a> or give a star on <a href="https://github.com/senseshift/senseshift-firmware" target="_blank" rel="noopener noreferrer">GitHub</a>!
+          </Admonition>
+        </> }
       </div>
     </>
   )
