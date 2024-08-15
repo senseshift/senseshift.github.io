@@ -1,13 +1,14 @@
 import React, { useCallback, useEffect, useState, type FC } from 'react'
 import { useWebSerial } from '@site/src/context'
 
-import { EspLoader } from 'esptool.ts'
+import { ESPLoader, FlashOptions, LoaderOptions, Transport } from 'esptool-js'
+import md5 from 'crypto-js/md5'
+import latin1 from 'crypto-js/enc-latin1'
 
 import Admonition from '@theme/Admonition'
 import Button from '../Button'
 
 import type { FirmwareManifest } from './types'
-import WebSerialError from './WebSerialError'
 
 function sleep(ms: number) {
   return new Promise(resolve => setTimeout(resolve, ms));
@@ -23,16 +24,21 @@ enum Status {
 }
 
 interface StepFirmwareUploadProps {
+  displayAdvancedOptions?: boolean
   manifest: FirmwareManifest
   onError?: (e: unknown) => void
 }
-const StepFirmwareUpload: FC<StepFirmwareUploadProps> = ({ manifest, onError }) => {
+// todo: add xterm.js terminal for user to see the logs
+const StepFirmwareUpload: FC<StepFirmwareUploadProps> = ({ manifest, onError, displayAdvancedOptions = false }) => {
   const [ status, setStatus ] = useState<Status>(Status.Idle)
   const [ progress, setProgress ] = useState<number>()
 
   const { isSupported, requestPort, port } = useWebSerial()
-  const [ espLoader, setLoader ] = useState<EspLoader>()
-  const [ baudRate, setBaudRate ] = useState<115200 | 230400 | 921600>(115200)
+  const [ espLoader, setLoader ] = useState<ESPLoader>()
+  const [ portInfo, setPortInfo ] = useState<SerialPortInfo>()
+  const [ chip, setChip ] = useState<string>()
+
+  const [ baudRate, setBaudRate ] = useState<number>(921600)
 
   const connect = useCallback(
     async () => {
@@ -42,23 +48,22 @@ const StepFirmwareUpload: FC<StepFirmwareUploadProps> = ({ manifest, onError }) 
 
       try {
         setStatus(Status.Connecting)
-        setBaudRate(115200)
 
         const port = await requestPort()
-        await port.open({ baudRate })
+        const transport = new Transport(port, true)
 
-        console.debug(port.getInfo())
+        setPortInfo(port.getInfo())
 
         try {
-          const loader = new EspLoader(port);
-          await loader.connect(25)
+          // @ts-ignore 
+          const flashOptions: LoaderOptions = {
+            transport,
+            baudrate: baudRate,
+          }
 
-          const chipFamily = await loader.chipFamily();
-          const chipName = await loader.chipName();
-          const macAddr = await loader.macAddr();
-
-          console.log({ chipFamily, chipName, macAddr })
-
+          const loader = new ESPLoader(flashOptions);
+         
+          setChip(await loader.main());
           setLoader(loader)
           setStatus(Status.Connected)
         } catch(e) {
@@ -75,38 +80,49 @@ const StepFirmwareUpload: FC<StepFirmwareUploadProps> = ({ manifest, onError }) 
     [ requestPort ]
   )
 
-  useEffect(() => { connect() }, []) // Connect on mount
+  useEffect(() => { 
+    connect();
+  }, []) // Connect on mount
 
-  useEffect(() => () => {
-    espLoader && espLoader.disconnect().finally(() => { port && port.close() })
-  }, [ espLoader ]) // Disconnect on unmount
+  useEffect(() => {
+    const thisPort = port
+    return () => {
+      thisPort && thisPort.close()
+    }
+  }, [ port ]) // Disconnect on unmount
 
   const flashFirmware = useCallback(
     async () => {
       setStatus(Status.Flashing)
 
-      await espLoader.loadStub();
-      await espLoader.setBaudRate(baudRate, 921600);
+      const totalSize = manifest.parts.reduce((acc, part) => acc + part.data.length, 0)
 
-      setBaudRate(921600)
+      // @ts-ignore
+      const flashOptions: FlashOptions = {
+        eraseAll: false,
+        compress: true,
+        fileArray: manifest.parts.map(part => ({
+          data: part.data,
+          address: part.offset,
+        })),
+        flashSize: "keep",
+        reportProgress: (fileIndex, written) => {
+          const previousFilesSize = manifest.parts.slice(0, fileIndex).reduce((acc, part) => acc + part.data.length, 0)
+          const currentSize = written + previousFilesSize
 
-      const totalSize = manifest.parts.reduce((acc, part) => acc + part.binary.size, 0)
-      for (const [i, partition] of manifest.parts.entries()) {
-        const prevSize = manifest.parts.slice(0, i).reduce((acc, part) => acc + part.binary.size, 0)
-        const currentSize = partition.binary.size
+          setProgress(currentSize / totalSize)
+        },
+        calculateMD5Hash: (image) => md5(latin1.parse(image)).toString(),
+      };
 
-        const data = new Uint8Array(await partition.binary.arrayBuffer())
-        await espLoader.flashData(data, partition.offset, (idx, cnt) => {
-          const currentProgress = currentSize * (idx / cnt)
-          setProgress((prevSize + currentProgress) / totalSize)
-        });
-        await sleep(100);
-      }
+      await espLoader.writeFlash(flashOptions)
 
-      await espLoader.disconnect()
       setStatus(Status.Success)
+
+      port && port.close();
+      setLoader(undefined);
     },
-    [ manifest, port, espLoader ]
+    [ manifest, espLoader, setStatus, setProgress ]
   )
 
   return (
@@ -127,6 +143,27 @@ const StepFirmwareUpload: FC<StepFirmwareUploadProps> = ({ manifest, onError }) 
           </Admonition>
         </> }
       </div>
+      
+      { displayAdvancedOptions && (
+        <div className='tw-flex tw-flex-col tw-space-y-6'>
+          <dl>
+            <dt>USB PID</dt>
+            <dd>
+              { portInfo?.usbProductId ? <code>{ portInfo?.usbProductId }</code> : <>&mdash;</> }
+            </dd>
+
+            <dt>USB VID</dt>
+            <dd>
+              { portInfo?.usbVendorId ? <code>{ portInfo?.usbVendorId }</code> : <>&mdash;</> }
+            </dd>
+
+            <dt>Chip</dt>
+            <dd>
+              { chip ? <code>{ chip }</code> : <>&mdash;</> }
+            </dd>
+          </dl>
+        </div>
+      )}
     </>
   )
 }

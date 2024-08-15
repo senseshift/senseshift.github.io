@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useState, type FC } from 'react'
 import { useDropzone } from 'react-dropzone'
 
-import { BlobReader, BlobWriter, ZipReader } from "@zip.js/zip.js"
+import { BlobReader, BlobWriter, TextWriter, ZipReader } from "@zip.js/zip.js"
 
 import Button from '../Button'
 
@@ -21,15 +21,15 @@ const makeManifestFromArchive = async (archive: File): Promise<FirmwareManifest>
 
   const manifestEntry = contents.find((e) => e.filename === 'manifest.json')
   if (!manifestEntry) {
-    return
+    return // TODO: display error
   }
 
   const manifest: FirmwareManifest = JSON.parse(await (await manifestEntry.getData(new BlobWriter())).text())
 
   for (const part of manifest.parts) {
     const binaryEntry = contents.find((e) => e.filename === part.path)
-    const binary = await binaryEntry.getData(new BlobWriter())
-    manifest.parts[manifest.parts.findIndex((p) => p.path === part.path)] = Object.assign({}, part, { binary })
+    const data = await binaryEntry.getData(new TextWriter('latin1'))
+    manifest.parts[manifest.parts.findIndex((p) => p.path === part.path)].data = data
   }
 
   return manifest

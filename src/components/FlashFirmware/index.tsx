@@ -77,6 +77,8 @@ const flashFirmwareReducer = (state: FirmwareFlashState, action: Action): Firmwa
 const FlashFirmware: FC = () => {
   const [ error, setError ] = useState<unknown>();
 
+  const [ displayAdvancedOptions, setDisplayAdvancedOptions ] = useState(false)
+
   const { isSupported: isWebSerialSupported, error: serialError, port } = useWebSerial()
   useEffect(() => { setError(serialError) }, [ serialError ])
 
@@ -92,7 +94,14 @@ const FlashFirmware: FC = () => {
           <div className='tw-max-w-md'>
             { state.currentStep === Step.Configure && <StepFirmwareConfigure onSubmit={(data) => dispatch(setFirmwareConfig(data))} /> }
             { state.currentStep === Step.Download && <StepFirmwareDownload version={state.version!} downloadUrl={state.downloadUrl} onSubmit={(data) => dispatch(setFirmwareManifest(data))} />}
-            { state.currentStep === Step.Upload && <StepFirmwareUpload manifest={state.manifest!} onError={setError} />}
+            { state.currentStep === Step.Upload && <StepFirmwareUpload manifest={state.manifest!} onError={setError} displayAdvancedOptions={displayAdvancedOptions} />}
+          </div>
+
+          <div className='tw-mt-4'>
+            <label className='tw-flex tw-items-center tw-space-x-2'>
+              <input type='checkbox' checked={displayAdvancedOptions} onChange={(e) => setDisplayAdvancedOptions(e.target.checked)} />
+              <span className='tw-text-sm'>Show advanced options</span>
+            </label>
           </div>
         </>
       ) }
