@@ -14,9 +14,10 @@ type Asset = Components["schemas"]["release-asset"]
 
 interface StepFirmwareConfigureProps {
   onSubmit?: (value: { version: Release["tag_name"], asset: Asset['node_id'], downloadUrl: string }) => void
+  displayAdvancedOptions?: boolean
 }
 
-const StepFirmwareConfigure: FC<StepFirmwareConfigureProps> = ({ onSubmit }) => {
+const StepFirmwareConfigure: FC<StepFirmwareConfigureProps> = ({ onSubmit, displayAdvancedOptions = false }) => {
   const octokit = useRef(new Octokit())
   const { isInitialLoading, data: releasesData } = useQuery({
     queryKey: ['senseshift-firmware', 'releases'],
@@ -24,9 +25,22 @@ const StepFirmwareConfigure: FC<StepFirmwareConfigureProps> = ({ onSubmit }) => 
     refetchOnWindowFocus: false,
   })
 
+  const [ displayBeta, setDisplayBeta ] = useState<boolean>(false)
+
+  const betaNeedles = ['beta', 'alpha', 'rc']
   const releases = useMemo<Release[]>(
-    () => releasesData?.filter(({ tag_name }) => compareVersions(tag_name, '0.1.3') >= 0),
-    [ releasesData ]
+    () => releasesData?.filter(({ tag_name }) => {
+      if (compareVersions(tag_name, '0.1.3') <= 0) {
+        return false
+      }
+
+      if (!displayBeta && betaNeedles.some(needle => tag_name.includes(needle))) {
+        return false
+      }
+
+      return true
+    }),
+    [ releasesData, displayBeta ]
   )
   const [ selectedTag, selectTag ] = useState<string>()
   useEffect(() => { releases && selectTag(releases[0].tag_name) }, [ releases ]) // Select tag on initial load
@@ -106,6 +120,15 @@ const StepFirmwareConfigure: FC<StepFirmwareConfigureProps> = ({ onSubmit }) => 
       >
         { isInitialLoading ? 'Loading...' : 'Continue' }
       </Button>
+
+      { displayAdvancedOptions && (
+        <div className='tw-mt-4'>
+          <label className='tw-flex tw-items-center tw-space-x-2'>
+            <input type='checkbox' checked={displayBeta} onChange={(e) => setDisplayBeta(e.target.checked)} />
+            <span className='tw-text-sm'>Show beta vesions</span>
+          </label>
+        </div>
+      )}
     </div>
   )
 }

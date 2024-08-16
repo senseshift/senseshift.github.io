@@ -92,7 +92,7 @@ const FlashFirmware: FC = () => {
           { error && <WebSerialError error={error} />}
 
           <div className='tw-max-w-md'>
-            { state.currentStep === Step.Configure && <StepFirmwareConfigure onSubmit={(data) => dispatch(setFirmwareConfig(data))} /> }
+            { state.currentStep === Step.Configure && <StepFirmwareConfigure onSubmit={(data) => dispatch(setFirmwareConfig(data))} displayAdvancedOptions={displayAdvancedOptions} /> }
             { state.currentStep === Step.Download && <StepFirmwareDownload version={state.version!} downloadUrl={state.downloadUrl} onSubmit={(data) => dispatch(setFirmwareManifest(data))} />}
             { state.currentStep === Step.Upload && <StepFirmwareUpload manifest={state.manifest!} onError={setError} displayAdvancedOptions={displayAdvancedOptions} />}
           </div>
