@@ -41,7 +41,7 @@
     "@docusaurus/types": "^3.0.0",
     "@docusaurus/tsconfig": "^3.5.2",
     "@types/crypto-js": "^4.2.2",
-    "@types/react": "^18.3.4",
+    "@types/react": "^18.3.5",
     "@types/w3c-web-serial": "^1.0.6",
     "typescript": "^5.5.4"
   },
