@@ -2469,10 +2469,10 @@
   resolved "https://registry.yarnpkg.com/@types/unist/-/unist-3.0.2.tgz#6dd61e43ef60b34086287f83683a5c1b2dc53d20"
   integrity sha512-dqId9J8K/vGi5Zr7oo212BGii5m3q5Hxlkwy3WpYuKPklmBEvsbMYYyLxAQpSffdLl/gdW0XUpKWFvYmyoWCoQ==
 
-"@types/w3c-web-serial@^1.0.6":
-  version "1.0.6"
-  resolved "https://registry.yarnpkg.com/@types/w3c-web-serial/-/w3c-web-serial-1.0.6.tgz#f064dbad4f3019326060df2a24f4c61ee787edb2"
-  integrity sha512-5IlDdQ2C56sCVwc7CUlqT9Axxw+0V/FbWRbErklYIzZ5mKL9s4l7epXHygn+4X7L2nmAPnVvRl55XUVo0760Rg==
+"@types/w3c-web-serial@^1.0.7":
+  version "1.0.7"
+  resolved "https://registry.yarnpkg.com/@types/w3c-web-serial/-/w3c-web-serial-1.0.7.tgz#44416509af271e5196833ff5e1337c7c256991c6"
+  integrity sha512-jzcwm//EZ0Z306L1/O1GXC3GthRd//9eaNB4/Yagm98UjEQViTzDS8bYvL+y+rTk1r9OFt9Yhp5pprUQFzSiiQ==
 
 "@types/ws@^8.5.5":
   version "8.5.10"
