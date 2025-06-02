@@ -4394,10 +4394,10 @@ esprima@^4.0.0:
   resolved "https://registry.yarnpkg.com/esprima/-/esprima-4.0.1.tgz#13b04cdb3e6c5d19df91ab6987a8695619b0aa71"
   integrity sha512-eGuFFw7Upda+g4p+QHvnW0RyTX/SVeJBDM/gCtMARO0cLuT2HcEKnTPvhjV6aGeqrCB/sbNop0Kszm0jsaWU4A==
 
-esptool-js@^0.5.4:
-  version "0.5.4"
-  resolved "https://registry.yarnpkg.com/esptool-js/-/esptool-js-0.5.4.tgz#769494e712a5a072e1afc9d2cc1b35f5e81f7331"
-  integrity sha512-B+XcbbPBjfmnMHVGktGlNI85BbEIQs02y4hoYuqM25q6yVPqLE3bxce/KWtKXH4IGruWTkEujqdKxNeWEV2BDg==
+esptool-js@^0.5.5:
+  version "0.5.5"
+  resolved "https://registry.yarnpkg.com/esptool-js/-/esptool-js-0.5.5.tgz#0fd691e8945f0d9807d78ab9f6ec2c0cc18bea36"
+  integrity sha512-bDAfypqw32BREq0Ve6QE8ADBHMzqwCrG/GN8GYZAhnQEjKa4JBWyr+yHa4jlmutKPQAT00/Tzy3LorQOzFS3IA==
   dependencies:
     atob-lite "^2.0.0"
     pako "^2.1.0"
